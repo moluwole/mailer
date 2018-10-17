@@ -1,0 +1,74 @@
+@layout('master')
+
+@section('content')
+
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="box">
+          <div class="box-header">
+            <h2>Upload Phone Numbers</h2>
+          </div>
+          <div class="box-divider m-a-0"></div>
+
+          <div class="box-body p-v-md">
+            <div class="row row-sm">
+                <form action="/readcsv" method="POST" enctype="multipart/form-data" id="phone_select">
+                  {{ csrfField() }}
+                  <div class="form-control-file text-black">
+                    <input type="file" name="phone_numbers" id="file_select">
+                </div>
+                  <br />
+                </form>
+
+              <div class="text-right">
+                <a href="/loadnumber" class="btn btn-info">Show Saved Numbers</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box">
+        <div class="table-responsive">
+          <table id="tables_phone" class="display table table-striped b-t">
+
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Numbers</th>
+            </tr>
+            </thead>
+            <tbody>
+            @each(num in phoneNumbers)
+            <tr>
+              <td>{{ ($loop.index + 1) }}</td>
+              <td>{{ num.phone_number }}</td>
+            </tr>
+            @endeach
+            </tbody>
+
+          </table>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--/-->
+
+<script>
+  $(document).ready(function () {
+
+    $('#tables_phone').DataTable();
+
+    $('#file_select').change(function () {
+      $('#phone_select').submit()
+    });
+  })
+</script>
+
+@endsection

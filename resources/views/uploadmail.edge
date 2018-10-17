@@ -1,0 +1,74 @@
+@layout('master')
+
+@section('content')
+
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="box">
+          <div class="box-header">
+            <h2>Upload Emails</h2>
+          </div>
+          <div class="box-divider m-a-0"></div>
+
+          <div class="box-body p-v-md">
+            <div class="row row-sm">
+              <form action="/mail/readcsv" method="POST" enctype="multipart/form-data" id="email_select">
+                {{ csrfField() }}
+                <div class="form-control-file text-black">
+                  <input type="file" name="emails" id="file_select">
+                </div>
+                <br />
+              </form>
+
+              <div class="text-right">
+                <a href="/mail/loademail" class="btn btn-info">Show Saved Numbers</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box">
+          <div class="table-responsive">
+            <table id="tables_email" class="display table table-striped b-t">
+
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Emails</th>
+              </tr>
+              </thead>
+              <tbody>
+              @each(email in Emails)
+              <tr>
+                <td>{{ ($loop.index + 1) }}</td>
+                <td>{{ email.email }}</td>
+              </tr>
+              @endeach
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--/-->
+
+<script>
+  $(document).ready(function () {
+
+    $('#tables_email').DataTable();
+
+    $('#file_select').change(function () {
+      $('#email_select').submit()
+    });
+  })
+</script>
+
+@endsection

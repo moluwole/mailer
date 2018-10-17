@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WhatsApp Mass Mailer</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+
+  <!-- style -->
+
+  <!-- style -->
+  {{ style("assets/animate.css/animate.min.css") }}
+  {{ style("assets/glyphicons/glyphicons.css") }}
+  {{ style("assets/font-awesome/css/font-awesome.min.css") }}
+  {{ style("assets/material-design-icons/material-design-icons.css") }}
+  {{ style("assets/bootstrap/dist/css/bootstrap.min.css") }}
+  {{ style("assets/styles/app.min.css") }}
+  {{ style("assets/styles/font.css") }}
+  {{ style("assets/summernote/summernote-lite.css") }}
+  {{ style("assets/datatables.min.css") }}
+  {{ style('assets/sweetalert/sweetalert.css') }}
+
+  <!--JS-->
+  {{ script("libs/jquery/jquery/dist/jquery.js") }}
+  {{ script("libs/jquery/tether/dist/js/tether.min.js") }}
+  {{ script("libs/jquery/bootstrap/dist/js/bootstrap.js") }}
+  {{ script("scripts/ui-scroll-to.js") }}
+  {{ script("scripts/app.html.js") }}
+  {{ script("assets/summernote/summernote-lite.js")}}
+  {{ script('assets/sweetalert/sweetalert.min.js') }}
+  {{ script("assets/datatables.min.js") }}
+
+</head>
+<body>
+<div class="app" id="app">
+
+  @if(flashMessage('notification'))
+    <script> swal("Success", "{{ flashMessage('notification') }}", "success") </script>
+  @endif
+
+  @if(flashMessage('error'))
+    <script> swal("Error", "{{ flashMessage('error') }}", "error") </script>
+  @endif
+
+  <!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside modal fade folded md nav-expand">
+    <div class="left navside indigo-900 dk" layout="column">
+      <div class="navbar navbar-md no-radius">
+        <!-- brand -->
+        <a class="navbar-brand">
+          <div ui-include="'../assets/images/logo.svg'"></div>
+          <img src="../assets/images/logo.png" alt="." class="hide">
+          <span class="hidden-folded inline">Mass Mailer</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <div flex class="hide-scroll">
+        <nav class="scroll nav-active-primary">
+
+          <ul class="nav" ui-nav>
+            <li class="nav-header hidden-folded">
+              <small class="text-muted">Main</small>
+            </li>
+
+            <li>
+              <a href="/" >
+                  <span class="nav-icon">
+                    <i class="material-icons">dashboard
+                      <span ui-include="'../assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Dashboard</span>
+              </a>
+            </li>
+
+            <br/>
+
+            <!--WhatsApp-->
+            <li class="nav-header hidden-folded">
+              <small class="text-muted">WhatsApp</small>
+            </li>
+
+            <li>
+              <a href="/loadnumber">
+                <span class="nav-icon">
+                    <i class="material-icons">person_add
+                      <span ui-include="'../assets/images/i_1.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Add Contacts</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="message">
+                <span class="nav-icon">
+                    <i class="material-icons">message
+                      <span ui-include="'../assets/images/i_1.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Send Message</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/status">
+                <span class="nav-icon">
+                    <i class="material-icons">check_circle_outline
+                      <span ui-include="'../assets/images/i_2.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Check Status</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/qr" >
+                  <span class="nav-icon">
+                    <i class="material-icons">settings
+                      <span ui-include="'../assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Setup Account</span>
+              </a>
+            </li>
+
+            <!--Email Sender Here-->
+            <br />
+            <li class="nav-header hidden-folded">
+              <small class="text-muted">Email</small>
+            </li>
+
+            <li>
+              <a href="/mail/loademail" >
+                  <span class="nav-icon">
+                    <i class="material-icons">mail_outline
+                      <span></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Add Emails</span>
+              </a>
+            </li>
+
+
+            <li>
+              <a href="/mail/message" >
+                  <span class="nav-icon">
+                    <i class="material-icons">send
+                      <span></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Send Email</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+      <div flex-no-shrink>
+        <div ui-include="'../views/blocks/aside.bottom.0.html'"></div>
+      </div>
+    </div>
+  </div>
+  <!-- / aside -->
+
+  <div id="content" class="app-content box-shadow-z0" role="main">
+    @!section('content')
+  </div>
+
+  <!-- ############ LAYOUT END-->
+
+</div>
+
+</body>
+</html>

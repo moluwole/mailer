@@ -1,0 +1,138 @@
+@layout('master')
+
+
+@section('content')
+<style>
+  textarea#styled {
+    width: 500px;
+    height: 250px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    font-family: Tahoma, sans-serif;
+    background-image: url(bg.gif);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<script>
+  function setbg(color)
+  {
+    document.getElementById("styled").style.background=color
+  }
+</script>
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <!--{{ phoneNumbers }}-->
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h2>Message To Send</h2>
+            <small>
+              Enter Message to send
+            </small>
+          </div>
+          <div class="box-divider m-a-0"></div>
+          <div class="box-body">
+            <!--<div class="summernote-ui" id="summernote">-->
+                <!--Summernote editor-->
+            <!--</div>-->
+            <form action="/sendmessage" method="POST">
+              {{ csrfField() }}
+              <textarea name="editordata" id="styled" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+              <br /> <br />
+              <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="row">
+            <div style="margin: 0.5rem;">
+              <div class="box">
+                <div class="box-header">
+                  <h2>Delete Phone Number</h2>
+                </div>
+                <div class="box-divider m-a-0"></div>
+                <div class="box-body">
+
+                  <form action="/blacklist" method="POST">
+                    {{ csrfField() }}
+                    <div class="form-group row">
+                      <label class="col-sm-3 form-control-label">Phone Number</label>
+                      <div class="col-sm-9">
+                        <input name="black_number" class="form-control" data-parsley-type="number" data-parsley-id="60" placeholder="234xxxxxxxxxx" type="number" required>
+                      </div>
+                    </div>
+                    <div class="p-a text-right">
+                      <button class="btn danger" type="submit">Delete &nbsp;<i class="material-icons">delete_forever</i> </button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-body">
+
+            <div class="table-responsive">
+                <table id="tables_phone" class="display table table-striped b-t">
+
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Numbers</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @each(num in phoneNumbers)
+                      <tr>
+                        <td>{{ ($loop.index + 1) }}</td>
+                        <td>{{ num.phone_number }}</td>
+                      </tr>
+                    @endeach
+                  </tbody>
+
+                </table>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#tables_phone').DataTable();
+
+    $('#select_file').change(function () {
+      $('#phone_select').submit()
+    });
+
+    $('#summernote').summernote({
+      height: 300,
+      direction: 'rtl',
+      toolbar: [
+        // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
+      ]
+    });
+  });
+</script>
+<!-- / -->
+@endsection
