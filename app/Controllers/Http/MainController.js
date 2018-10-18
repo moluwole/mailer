@@ -179,6 +179,10 @@ class MainController {
   }
 
   static cronJob() {
+
+    let stopCron = false
+    let reason = ""
+
     let job = new CronJob('0 */1 * * * *', async function () {
 
       let sendMessageUrl = url + "message?token=" + token
@@ -199,6 +203,8 @@ class MainController {
 
       //Check for threshold
       if ((curDate === currentCount['curDate']) && (parseInt(currentCount['count'] >= 6000))) {
+        stopCron = true
+        reason = "Threshold met"
         return
       }
 
@@ -206,18 +212,20 @@ class MainController {
 
       numberList = numberList.toJSON()
 
-      if (numberList === null || numberList === undefined || numberList.length <= 0) return
+      if (numberList === null || numberList === undefined || numberList.length <= 0){
+        stopCron = true
+        reason = "Messages sent"
+        return
+      }
 
       for (let i = 0; i < 120; i++) {
         try {
 
-          if (numberList === null || numberList === undefined || numberList.length <= 0) {
-            break
-          }
-
           let number = numberList[i]['number']
 
           if (number === null || number === undefined) {
+            reason = "All messages sent"
+            stopCron = true
             break
           }
 
@@ -272,11 +280,22 @@ class MainController {
         }
         catch (e) {
           console.log(e)
+          stopCron = true
           break
         }
       }
     })
-    job.start()
+
+    if (stopCron) {
+      if (job.isRunning()){
+        job.stop()
+        console.log("Cron Job stopped. Reason: " + reason)
+      }
+    }
+    else {
+      job.start()
+      console.log("Cron Job Started.")
+    }
   }
 }
 

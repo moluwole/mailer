@@ -4,6 +4,7 @@ const EmailList = use('App/Models/EmailList')
 const Email = use('App/Models/Email')
 const EmailCount = use('App/Models/EmailCount')
 const EmailMessage = use('App/Models/EmailMessage')
+const CronJob = require('cron').CronJob
 
 
 class EmailController {
@@ -78,10 +79,51 @@ class EmailController {
 
   async messages({view}){
     const emailList = await EmailList.all()
-
     let emails = emailList.toJSON()
-    // console.log(numbers)
     return view.render('sendmail', { Emails: emails })
+  }
+
+  async sendMail({session, request, response}){
+    let data = request.collect(['mailMessage'])
+
+    let messageBody = data[0]['mailMessage']
+
+    if (messageBody === null || messageBody === ""){
+      session.flash({
+        error: 'Enter a message to proceed'
+      })
+      return response.redirect('back')
+    }
+
+    let messageDB = new EmailMessage()
+
+    messageDB.message = messageBody
+
+    await messageDB.save()
+
+    const messageID = messageDB.id
+
+    let emailArray = await EmailList.all()
+    emailArray = emailArray.toJSON()
+
+    for (let count =0; count < emailArray.length; count++){
+      let emails = new Email()
+
+      emails.message_id = messageID
+      emails.email = emailArray[count]['email']
+
+      await emails.save()
+    }
+
+    EmailController.cronJob()
+
+    session.flash({notification: 'Email Queued for sending.'})
+
+    return response.redirect('back')
+  }
+
+  static cronJob(){
+
   }
 }
 

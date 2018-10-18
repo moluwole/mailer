@@ -41,7 +41,7 @@
             <!--</div>-->
             <form action="/mail/sendmail" method="POST">
               {{ csrfField() }}
-              <textarea name="editordata" id="summernote"></textarea>
+              <textarea name="mailMessage" id="summernote"></textarea>
               <br /> <br />
               <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
             </form>
@@ -128,22 +128,18 @@
     // console.log("Ready");
     $('#tables_email').DataTable();
 
-    // $('#select_file').change(function () {
-    //   $('#phone_select').submit()
-    // });
-
     $('#summernote').summernote({
       height: 300,
-      direction: 'rtl',
-      toolbar: [
-        // [groupName, [list of button]]
-        ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['strikethrough', 'superscript', 'subscript']],
-        ['fontsize', ['fontsize']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']]
-      ]
+      direction: 'rtl'
+      // toolbar: [
+      //   // [groupName, [list of button]]
+      //   ['style', ['bold', 'italic', 'underline', 'clear']],
+      //   ['font', ['strikethrough', 'superscript', 'subscript']],
+      //   ['fontsize', ['fontsize']],
+      //   ['color', ['color']],
+      //   ['para', ['ul', 'ol', 'paragraph']],
+      //   ['height', ['height']]
+      // ]
     });
   });
 </script>
