@@ -17,6 +17,12 @@ const token       = "bwoeym1nav2sy1af"
 
 class MainController {
 
+  async loadContacts({view}){
+    const numbersList = await NumberList.all()
+    let numbers = numbersList.toJSON()
+    return view.render('deletecontact', { phoneNumbers: numbers })
+  }
+
   async test({view}) {
     return view.render('master')
   }
@@ -44,7 +50,8 @@ class MainController {
 
     if (status === 'got qr code') {
       console.log("Got QR")
-      return response.redirect('/qr')
+      let qrcode = JSON.parse(status_response.getBody())['qrCode']
+      return view.render('qr', {QR: qrcode})
     }
 
     if (status === "authenticated") {
@@ -203,8 +210,8 @@ class MainController {
 
       //Check for threshold
       if ((curDate === currentCount['curDate']) && (parseInt(currentCount['count'] >= 6000))) {
-        stopCron = true
-        reason = "Threshold met"
+        // stopCron = true
+        // reason = "Threshold met"
         return
       }
 

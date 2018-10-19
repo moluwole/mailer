@@ -1,10 +1,12 @@
 'use strict'
 
 const EmailList = use('App/Models/EmailList')
-const Email = use('App/Models/Email')
-const EmailCount = use('App/Models/EmailCount')
+const Email         = use('App/Models/Email')
+const EmailCount    = use('App/Models/EmailCount')
 const EmailMessage = use('App/Models/EmailMessage')
-const CronJob = require('cron').CronJob
+const Helpers = use('Helpers')
+const csv = require('csv')
+const Moment = require('moment')
 
 
 class EmailController {
@@ -14,7 +16,7 @@ class EmailController {
 
     let email = emailObj[0]['black_email']
 
-    let emailData = await EmailList.query().where({'phone_email': email}).fetch()
+    let emailData = await EmailList.query().where({'email': email}).fetch()
 
     let eData = emailData.toJSON()
     if (eData.length <= 0){
@@ -84,9 +86,11 @@ class EmailController {
   }
 
   async sendMail({session, request, response}){
-    let data = request.collect(['mailMessage'])
+    let formData = request.collect(['mailMessage', 'sender', 'subject'])
 
-    let messageBody = data[0]['mailMessage']
+    let messageBody = formData[0]['mailMessage']
+    let senderData  = formData[0]['sender']
+    let subject     = formData[0]['subject']
 
     if (messageBody === null || messageBody === ""){
       session.flash({
@@ -101,29 +105,117 @@ class EmailController {
 
     await messageDB.save()
 
-    const messageID = messageDB.id
+    // const messageID = messageDB.id
 
     let emailArray = await EmailList.all()
+
     emailArray = emailArray.toJSON()
+    // console.log(emailArray.length)
 
-    for (let count =0; count < emailArray.length; count++){
-      let emails = new Email()
+    //MailGun ThreshHold
+    let threshold = 10000
 
-      emails.message_id = messageID
-      emails.email = emailArray[count]['email']
+    let emails = ""
 
-      await emails.save()
+    let currMonth = new Moment().format("MMMM")
+
+    //Get the count
+    let emailCount = await EmailCount.first()
+    if (!emailCount){
+      emailCount = new EmailCount()
+
+      emailCount.month = currMonth
+      emailCount.count = 0
+
+      await emailCount.save()
     }
 
-    EmailController.cronJob()
+    //Check if MailGun threshold has passed for the month
+    if ((currMonth === emailCount['month']) && (parseInt(emailCount['count']) >= threshold)){
+      session.flash({
+        error: 'You have passed the MailGun limit for this month'
+      })
+      return response.redirect('back')
+    }
 
-    session.flash({notification: 'Email Queued for sending.'})
+    for (let count =0; count < threshold; count++){
+      if (count >= emailArray.length) break
 
+      emails += `${emailArray[count]['email']},`
+
+      emailCount.month = currMonth
+      emailCount.count = parseInt(emailCount.count) + 1
+
+      await emailCount.save()
+    }
+
+    let api_key       = 'key-58f64cd93cf24ded317799218aa502cd';
+    let domain        = 'mg.tft-spark.co';
+    let mailgun       = require('mailgun-js')({apiKey: api_key, domain: domain});
+    let MailComposer  = require('nodemailer/lib/mail-composer');
+
+    let data = {
+      from: senderData,
+      to: emails,
+      subject: subject,
+      html: EmailController.messageBDY(messageBody)
+    }
+
+    let mail = new MailComposer(data);
+
+    mail.compile().build(function (err, message) {
+
+      if(err){
+        session.flash({
+          error: 'Unable to send Emails. Reason: ' + err
+        })
+        return response.redirect('back')
+      }
+
+      if(message){
+        let dataToSend = {
+          to: emails,
+          message: message.toString('ascii')
+        };
+
+        mailgun.messages().sendMime(dataToSend, (sendError, body) => {
+          if (sendError) {
+            session.flash({
+              error: 'An Error Occurred: ' + sendError
+            })
+            return response.redirect('back')
+          }
+
+          session.flash({
+            notification: 'Mail Sent Successfully'
+          })
+          return response.redirect('back')
+        });
+      }
+      else{
+        session.flash({
+          error: 'Unable to send Mail. An error Occurred.'
+        })
+        return response.redirect('back')
+      }
+    });
+
+    session.flash({notification: 'Email Sent to Mail Servers'})
     return response.redirect('back')
   }
 
-  static cronJob(){
-
+  static messageBDY(message){
+    return ` <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="UTF-8">
+            <title>title</title>
+          </head>
+          <body>
+          ${message}
+          </body>
+        </html>
+`
   }
 }
 

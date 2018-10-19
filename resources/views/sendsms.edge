@@ -1,0 +1,103 @@
+@layout('master')
+
+
+@section('content')
+<script>
+  function setbg(color)
+  {
+    document.getElementById("styled").style.background=color
+  }
+</script>
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <!--{{ phoneNumbers }}-->
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h2>Message To Send</h2>
+            <small>
+              Enter Message to send
+            </small>
+          </div>
+          <div class="box-divider m-a-0"></div>
+          <div style="margin-left: 20px; margin-right: 20px;">
+            <div class="box-body">
+              <form action="/sendmessage" method="POST">
+                {{ csrfField() }}
+                <div class="form-group row">
+                  <label class="form-control-label">Sender Name</label>
+                  <input class="form-control" type="text" name="sender" placeholder="Sender Name">
+                </div>
+                <div class="form-group row">
+                  <label class="form-control-label">Message Body</label>
+                  <textarea class="form-control" name="editordata" id="styled" rows="5" placeholder="Enter Message to Send"
+                            onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-body">
+
+            <div class="table-responsive">
+              <table id="tables_phone" class="display table table-striped b-t">
+
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Numbers</th>
+                </tr>
+                </thead>
+                <tbody>
+                @each(num in phoneNumbers)
+                <tr>
+                  <td>{{ ($loop.index + 1) }}</td>
+                  <td>{{ num.phone_number }}</td>
+                </tr>
+                @endeach
+                </tbody>
+
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#tables_phone').DataTable();
+
+    $('#select_file').change(function () {
+      $('#phone_select').submit()
+    });
+
+    $('#summernote').summernote({
+      height: 300,
+      direction: 'rtl',
+      toolbar: [
+        // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
+      ]
+    });
+  });
+</script>
+<!-- / -->
+@endsection

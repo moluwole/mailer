@@ -3,41 +3,13 @@
 
 @section('content')
 
-<script>
-  function setbg(color)
-  {
-    document.getElementById("styled").style.background=color
-  }
-</script>
 <!-- content -->
 <div id="content" class="app-content box-shadow-z0" role="main">
   <!--{{ phoneNumbers }}-->
   <div class="padding">
     <div class="row">
       <div class="col-md-6">
-        <div class="box">
-          <div class="box-header">
-            <h2>Message To Send</h2>
-            <small>
-              Enter Message to send
-            </small>
-          </div>
-          <div class="box-divider m-a-0"></div>
-          <div class="box-body">
-            <form action="/sendmessage" method="POST">
-              {{ csrfField() }}
-              <textarea name="editordata" id="styled" class="form-control" rows="9" placeholder="Message Body"
-
-                        onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')"></textarea>
-              <br /> <br />
-              <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
-            </form>
-          </div>
-        </div>
-
-        <div class="">
           <div class="row">
-            <div style="margin: 0.5rem;">
               <div class="box">
                 <div class="box-header">
                   <h2>Delete Phone Number</h2>
@@ -60,9 +32,7 @@
 
                 </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
 
       <div class="col-md-6">
@@ -70,25 +40,25 @@
           <div class="box-body">
 
             <div class="table-responsive">
-                <table id="tables_phone" class="display table table-striped b-t">
+              <table id="tables_phone" class="display table table-striped b-t">
 
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Numbers</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @each(num in phoneNumbers)
-                      <tr>
-                        <td>{{ ($loop.index + 1) }}</td>
-                        <td>{{ num.phone_number }}</td>
-                      </tr>
-                    @endeach
-                  </tbody>
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Numbers</th>
+                </tr>
+                </thead>
+                <tbody>
+                @each(num in phoneNumbers)
+                <tr>
+                  <td>{{ ($loop.index + 1) }}</td>
+                  <td>{{ num.phone_number }}</td>
+                </tr>
+                @endeach
+                </tbody>
 
-                </table>
-              </div>
+              </table>
+            </div>
 
           </div>
         </div>

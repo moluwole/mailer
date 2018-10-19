@@ -85,11 +85,10 @@
               </a>
             </li>
 
-            <br/>
+            <br />
 
-            <!--WhatsApp-->
             <li class="nav-header hidden-folded">
-              <small class="text-muted">WhatsApp</small>
+              <small class="text-muted">Contacts</small>
             </li>
 
             <li>
@@ -104,7 +103,25 @@
             </li>
 
             <li>
-              <a href="message">
+              <a href="/del-contact">
+                <span class="nav-icon">
+                    <i class="material-icons">delete_forever
+                      <span ui-include="'../assets/images/i_1.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Delete Contact</span>
+              </a>
+            </li>
+
+            <br/>
+
+            <!--WhatsApp-->
+            <li class="nav-header hidden-folded">
+              <small class="text-muted">WhatsApp</small>
+            </li>
+
+            <li>
+              <a href="/message">
                 <span class="nav-icon">
                     <i class="material-icons">message
                       <span ui-include="'../assets/images/i_1.svg'"></span>
@@ -126,7 +143,7 @@
             </li>
 
             <li>
-              <a href="/qr" >
+              <a href="/status" >
                   <span class="nav-icon">
                     <i class="material-icons">settings
                       <span ui-include="'../assets/images/i_3.svg'"></span>
@@ -162,6 +179,23 @@
                     </i>
                   </span>
                 <span class="nav-text">Send Email</span>
+              </a>
+            </li>
+
+            <!--SMS Sender Here-->
+            <br />
+            <li class="nav-header hidden-folded">
+              <small class="text-muted">SMS</small>
+            </li>
+
+            <li>
+              <a href="/sms/message" >
+                  <span class="nav-icon">
+                    <i class="material-icons">sms
+                      <span></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Send SMS</span>
               </a>
             </li>
 

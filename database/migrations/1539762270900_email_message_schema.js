@@ -6,7 +6,7 @@ class EmailMessageSchema extends Schema {
   up () {
     this.create('email_messages', (table) => {
       table.increments()
-      table.text('message')
+      table.text('message', 'longtext')
       table.timestamps()
     })
   }

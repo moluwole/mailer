@@ -18,11 +18,12 @@ const Route = use('Route')
 
 Route.get('/', 'MainController.index')
 Route.get('/status', 'MainController.status')
-Route.get('/qr', 'MainController.setUpQr')
+Route.get('/qr', 'MainController.status')
 Route.get('/message', 'MainController.messages')
+Route.get('/del-contact', 'MainController.loadContacts')
 
 // Route.get('/upd', ({ view }) => {
-//   return view.render('upload')
+//   return view.render('deletecontact')
 // })
 
 Route.get('/messages', 'MainController.messages')
@@ -40,3 +41,7 @@ Route.group(() => {
   Route.post('/sendmail', 'EmailController.sendMail')
   Route.post('/readcsv', 'EmailController.readCsv')
 }).prefix('mail')
+
+Route.group(() => {
+  Route.get('/message', 'SmController.message')
+}).prefix('sms')
