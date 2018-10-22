@@ -7,6 +7,7 @@ class EmailListSchema extends Schema {
     this.create('email_lists', (table) => {
       table.increments()
       table.string('email')
+      table.string('type')
       table.timestamps()
     })
   }

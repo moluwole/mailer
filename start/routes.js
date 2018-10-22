@@ -22,9 +22,12 @@ Route.get('/qr', 'MainController.status')
 Route.get('/message', 'MainController.messages')
 Route.get('/del-contact', 'MainController.loadContacts')
 
-// Route.get('/upd', ({ view }) => {
-//   return view.render('deletecontact')
+// Route.get('/cat', ({ view }) => {
+//   return view.render('category')
 // })
+
+Route.get('/cat', 'UtilController.openCat')
+Route.post('/save-cat', 'UtilController.addCat')
 
 Route.get('/messages', 'MainController.messages')
 Route.get('/loadnumber', 'MainController.loadNumber')
@@ -44,4 +47,5 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/message', 'SmController.message')
+  Route.post('/send-message', 'SmController.sendMessage')
 }).prefix('sms')

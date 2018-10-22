@@ -35,7 +35,7 @@
             </small>
           </div>
           <div class="box-divider m-a-0"></div>
-          <div class="box-body">
+          <div class="box-body"  style="margin-left: 10px; margin-right: 10px">
             <!--<div class="summernote-ui" id="summernote">-->
             <!--Summernote editor-->
             <!--</div>-->
@@ -49,6 +49,18 @@
               </div>
               <div class="row form-group">
                 <textarea name="mailMessage" id="summernote"></textarea>
+              </div>
+              <div class="form-group row">
+                <label>Choose Email Catergory</label>
+                <select class="form-control select2 select2-hidden-accessible" name="email_type" ui-jp="select2"
+                        ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
+                  <optgroup label="Email Categories">
+                    <option>All</option>
+                    @each(cat in Types)
+                    <option>{{cat.types}}</option>
+                    @endeach
+                  </optgroup>
+                </select>
               </div>
               <br /> <br />
               <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
@@ -109,6 +121,7 @@
                 <tr>
                   <th>#</th>
                   <th>Emails</th>
+                  <th>Category</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,6 +129,7 @@
                 <tr>
                   <td>{{ ($loop.index + 1) }}</td>
                   <td>{{ email.email }}</td>
+                  <td>{{ email.type }}</td>
                 </tr>
                 @endeach
                 </tbody>

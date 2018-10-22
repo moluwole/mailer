@@ -27,8 +27,21 @@
             <form action="/sendmessage" method="POST">
               {{ csrfField() }}
               <textarea name="editordata" id="styled" class="form-control" rows="9" placeholder="Message Body"
-
                         onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+
+              <div class="form-group row" style="margin-left: 5px; margin-right: 5px; margin-top: 20px;">
+                <label>Choose Category to send to</label>
+                <select class="form-control select2 select2-hidden-accessible" name="phone_type" ui-jp="select2"
+                        ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
+                  <optgroup label="Phone Categories">
+                    <option>All</option>
+                    @each(cat in Types)
+                    <option>{{ cat.types }}</option>
+                    @endeach
+                  </optgroup>
+                </select>
+              </div>
+
               <br /> <br />
               <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
             </form>
@@ -76,6 +89,7 @@
                   <tr>
                     <th>#</th>
                     <th>Numbers</th>
+                    <th>Category</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -83,6 +97,7 @@
                       <tr>
                         <td>{{ ($loop.index + 1) }}</td>
                         <td>{{ num.phone_number }}</td>
+                        <td>{{ num.type }}</td>
                       </tr>
                     @endeach
                   </tbody>

@@ -17,7 +17,21 @@
             <div class="row row-sm">
                 <form action="/readcsv" method="POST" enctype="multipart/form-data" id="phone_select">
                   {{ csrfField() }}
-                  <div class="form-control-file text-black">
+
+                  <div class="form-group row" style="margin-left: 20px; margin-right: 20px">
+                    <label>Choose Phone Catergory</label>
+                    <select class="form-control select2 select2-hidden-accessible" name="phone_type" ui-jp="select2"
+                            ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
+                      <optgroup label="Phone Categories">
+                        <option>All</option>
+                        @each(cat in Types)
+                          <option>{{ cat.types }}</option>
+                        @endeach
+                      </optgroup>
+                    </select>
+                  </div>
+
+                  <div class="form-control-file text-black" style="margin-right: 20px; margin-left: 20px; margin-top: 10px">
                     <input type="file" name="phone_numbers" id="file_select">
                 </div>
                   <br />
@@ -39,6 +53,7 @@
             <tr>
               <th>#</th>
               <th>Numbers</th>
+              <th>Category</th>
             </tr>
             </thead>
             <tbody>
@@ -46,6 +61,7 @@
             <tr>
               <td>{{ ($loop.index + 1) }}</td>
               <td>{{ num.phone_number }}</td>
+              <td>{{ num.type }}</td>
             </tr>
             @endeach
             </tbody>

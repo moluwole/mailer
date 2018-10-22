@@ -14,13 +14,18 @@ const NumberList  = use("App/Models/NumberList")
 
 const url         = "https://eu19.chat-api.com/instance13237/"
 const token       = "bwoeym1nav2sy1af"
+const Type        = use('App/Models/Type')
 
 class MainController {
 
   async loadContacts({view}){
     const numbersList = await NumberList.all()
     let numbers = numbersList.toJSON()
-    return view.render('deletecontact', { phoneNumbers: numbers })
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('deletecontact', { phoneNumbers: numbers, Types: type })
   }
 
   async test({view}) {
@@ -38,7 +43,11 @@ class MainController {
   async messages({view}){
     const numbersList = await NumberList.all()
     let numbers = numbersList.toJSON()
-    return view.render('message', { phoneNumbers: numbers })
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('message', { phoneNumbers: numbers, Types: type })
   }
 
   async status({session, view, request, response}) {
@@ -72,6 +81,16 @@ class MainController {
 
   async readCsv({session, view, request, response}) {
 
+    let data = request.only(['phone_type'])
+    let phoneType = data['phone_type']
+
+    if (phoneType === null || phoneType === ""){
+      session.flash({
+        error: 'Choose Phone Type to proceed'
+      })
+      return response.redirect('back')
+    }
+
     var csvfile = request.file('phone_numbers', {
       maxSize: '5mb',
       allowedExtension: ['csv']
@@ -93,11 +112,10 @@ class MainController {
     csv().from.path(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).to.array(async function (data) {
       for (let index = 0; index < data.length; index++) {
 
-        // jsonObject.push(data[index][0])
-
         let numberList = new NumberList()
 
         numberList.phone_number = data[index][0]
+        numberList.type         = phoneType
 
         await numberList.save()
       }
@@ -111,13 +129,19 @@ class MainController {
   }
 
   async sendMessage({session, view, request, response}) {
-    let data = request.collect(['editordata'])
+    let data = request.collect(['editordata', 'phone_type'])
 
     let message_ = data[0]['editordata']
+    let phoneType = data[0]['phone_type']
 
-    // console.log(message)
+    if (phoneType === null || phoneType === ""){
+      session.flash({
+        error: 'Select a Category to send messages to '
+      })
+      return response.redirect('back')
+    }
 
-    if (message_ === null) {
+    if (message_ === null || message_ === "") {
       session.flash({
         error: 'Enter a message to proceed'
       })
@@ -135,7 +159,14 @@ class MainController {
     const messageID = messageDB.id
 
     //Get Number Array from Session and Save to Database
-    let numberArray = await NumberList.all()
+    let numberArray = null
+
+    if (phoneType === "All"){
+      numberArray = await NumberList.all()
+    }
+    else{
+      numberArray = await NumberList.query().where({type: phoneType}).fetch()
+    }
 
     numberArray = numberArray.toJSON()
 
@@ -159,8 +190,11 @@ class MainController {
     const numbersList = await NumberList.all()
 
     let numbers = numbersList.toJSON()
-    // console.log(numbers)
-    return view.render('upload', { phoneNumbers: numbers })
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('upload', { phoneNumbers: numbers, Types: type})
   }
 
   async blackList({session, view, request, response}){

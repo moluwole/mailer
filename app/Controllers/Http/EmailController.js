@@ -7,6 +7,7 @@ const EmailMessage = use('App/Models/EmailMessage')
 const Helpers = use('Helpers')
 const csv = require('csv')
 const Moment = require('moment')
+const Type = use('App/Models/Type')
 
 
 class EmailController {
@@ -36,10 +37,25 @@ class EmailController {
   async loadEmail({view}){
     const emailList = await EmailList.all()
     let email = emailList.toJSON()
-    return view.render('uploadmail', { Emails: email })
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('uploadmail', { Emails: email, Types: type })
   }
 
   async readCsv({session, view, request, response}) {
+
+    let data = request.only(['email_type'])
+
+    let emailType = data['email_type']
+
+    if (emailType === null || emailType === ""){
+      session.flash({
+        error: 'Select a type to save Emails as'
+      })
+      return response.redirect('back')
+    }
 
     var csvfile = request.file('emails', {
       maxSize: '5mb',
@@ -67,6 +83,7 @@ class EmailController {
         let emailList = new EmailList()
 
         emailList.email = data[index][0]
+        emailList.type  = emailType
 
         await emailList.save()
       }
@@ -82,19 +99,38 @@ class EmailController {
   async messages({view}){
     const emailList = await EmailList.all()
     let emails = emailList.toJSON()
-    return view.render('sendmail', { Emails: emails })
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('sendmail', { Emails: emails, Types: type })
   }
 
   async sendMail({session, request, response}){
-    let formData = request.collect(['mailMessage', 'sender', 'subject'])
+    let formData = request.collect(['mailMessage', 'sender', 'subject', 'email_type'])
 
     let messageBody = formData[0]['mailMessage']
     let senderData  = formData[0]['sender']
     let subject     = formData[0]['subject']
+    let emailType   = formData[0]['email_type']
+
+    if (emailType === null || emailType === ""){
+      session.flash({
+        error: 'Select a Category to proceed'
+      })
+      return response.redirect('back')
+    }
 
     if (messageBody === null || messageBody === ""){
       session.flash({
         error: 'Enter a message to proceed'
+      })
+      return response.redirect('back')
+    }
+
+    if (senderData === null || senderData === "") {
+      session.flash({
+        error: 'Enter Sender Name to proceed'
       })
       return response.redirect('back')
     }
@@ -105,12 +141,16 @@ class EmailController {
 
     await messageDB.save()
 
-    // const messageID = messageDB.id
+    let emailArray = null
 
-    let emailArray = await EmailList.all()
+    if (emailType === "All"){
+      emailArray = await EmailList.all()
+    }
+    else{
+      emailArray = await EmailList.query().where({type: emailType}).fetch()
+    }
 
     emailArray = emailArray.toJSON()
-    // console.log(emailArray.length)
 
     //MailGun ThreshHold
     let threshold = 10000
