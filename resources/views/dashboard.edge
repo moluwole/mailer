@@ -8,8 +8,8 @@
     <!-- ############ PAGE START-->
     <div class="padding">
       <div class="margin">
-        <h5 class="m-b-0 _300">Hi Jone, Welcome back</h5>
-        <small class="text-muted">Awesome uikit for your next project</small>
+        <h5 class="m-b-0 _300">Welcome back</h5>
+        <small class="text-muted">Mass Mailer for Promotions</small>
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-5 col-lg-4">
@@ -20,8 +20,8 @@
                   <i class="fa fa-heart text-2x text-danger m-y-sm"></i>
                 </div>
                 <div class="clear">
-                  <div class="text-muted">Likes</div>
-                  <h4 class="m-a-0 text-md _600"><a href="">7530</a></h4>
+                  <div class="text-muted">Total Numbers</div>
+                  <h4 class="m-a-0 text-md _600"><a href="">{{totalNumber}}</a></h4>
                 </div>
               </div>
             </div>
@@ -31,8 +31,8 @@
                   <i class="fa fa-comments text-2x text-info m-y-sm"></i>
                 </div>
                 <div class="clear">
-                  <div class="text-muted">Comments</div>
-                  <h4 class="m-a-0 text-md _600"><a href="">2980</a></h4>
+                  <div class="text-muted">Total Emails</div>
+                  <h4 class="m-a-0 text-md _600"><a href="">{{totalEmail}}</a></h4>
                 </div>
               </div>
             </div>
@@ -42,8 +42,8 @@
                   <i class="fa fa-photo text-2x text-accent m-y-sm"></i>
                 </div>
                 <div class="clear">
-                  <div class="text-muted">Photos</div>
-                  <h4 class="m-a-0 text-md _600"><a href= "">630</a></h4>
+                  <div class="text-muted">Categories</div>
+                  <h4 class="m-a-0 text-md _600"><a href= "">{{totalCategory}}</a></h4>
                 </div>
               </div>
             </div>
@@ -53,23 +53,23 @@
                   <i class="fa fa-video-camera text-2x text-success m-y-sm"></i>
                 </div>
                 <div class="clear">
-                  <div class="text-muted">Videos</div>
-                  <h4 class="m-a-0 text-md _600"><a href="">750</a></h4>
+                  <div class="text-muted">Messages Sent</div>
+                  <h4 class="m-a-0 text-md _600"><a href="">{{messageCount}}</a></h4>
                 </div>
               </div>
             </div>
-            <div class="col-xs-12">
-              <div class="row-col box-color text-center primary">
-                <div class="row-cell p-a">
-                  Followers
-                  <h4 class="m-a-0 text-md _600"><a href="">2350</a></h4>
-                </div>
-                <div class="row-cell p-a dker">
-                  Following
-                  <h4 class="m-a-0 text-md _600"><a href="">7250</a></h4>
-                </div>
-              </div>
-            </div>
+            <!--<div class="col-xs-12">-->
+              <!--<div class="row-col box-color text-center primary">-->
+                <!--<div class="row-cell p-a">-->
+                  <!--Followers-->
+                  <!--<h4 class="m-a-0 text-md _600"><a href="">2350</a></h4>-->
+                <!--</div>-->
+                <!--<div class="row-cell p-a dker">-->
+                  <!--Following-->
+                  <!--<h4 class="m-a-0 text-md _600"><a href="">7250</a></h4>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
           </div>
         </div>
         <div class="col-sm-12 col-md-7 col-lg-8">
@@ -77,7 +77,7 @@
             <div class="col-sm-8">
               <div class="box-header">
                 <h3>Activities</h3>
-                <small>Your last activity is posted 4 hours ago</small>
+                <small>Chart of Messages sent in the past days</small>
               </div>
               <div class="box-body">
                 <div ui-jp="plot" ui-refresh="app.setting.color" ui-options="
@@ -107,13 +107,13 @@
               </div>
             </div>
             <div class="col-sm-4 dker">
-              <div class="box-header">
-                <h3>Reports</h3>
-              </div>
-              <div class="box-body">
-                <p class="text-muted">Dales nisi nec adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis</p>
-                <a href="" class="btn btn-sm btn-outline rounded b-success">Read More</a>
-              </div>
+              <!--<div class="box-header">-->
+                <!--<h3>Reports</h3>-->
+              <!--</div>-->
+              <!--<div class="box-body">-->
+                <!--<p class="text-muted">Dales nisi nec adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis</p>-->
+                <!--<a href="" class="btn btn-sm btn-outline rounded b-success">Read More</a>-->
+              <!--</div>-->
             </div>
           </div>
         </div>
@@ -122,8 +122,8 @@
         <div class="col-md-12 col-xl-4">
           <div class="box">
             <div class="box-header">
-              <h3>Your tasks</h3>
-              <small>Calculated in last 7 days</small>
+              <h3>Messages in Queue</h3>
+              <!--<small>Calculated in last 7 days</small>-->
             </div>
             <div class="box-tool">
               <ul class="nav">

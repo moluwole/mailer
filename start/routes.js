@@ -16,7 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', 'MainController.index')
+Route.get('/', 'DashBoardController.index')
 Route.get('/status', 'MainController.status')
 Route.get('/qr', 'MainController.status')
 Route.get('/message', 'MainController.messages')
