@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WhatsApp Mass Mailer</title>
+  <meta name="description" content="Admin, Mailer, BrandEnvoy, Marketing, Email Marketing, Target Marketing, Whatsapp Marketing" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+
+  <!-- style -->
+  <!--{{ style("https://use.fontawesome.com/releases/v5.4.1/css/all.css")}}-->
+
+  {{ style("assets/animate.css/animate.min.css") }}
+  {{ style("assets/glyphicons/glyphicons.css") }}
+  {{ style("assets/font-awesome/css/font-awesome.min.css") }}
+  {{ style("assets/material-design-icons/material-design-icons.css") }}
+  {{ style("assets/bootstrap/dist/css/bootstrap.min.css") }}
+  {{ style("assets/styles/app.min.css") }}
+  {{ style("assets/styles/font.css") }}
+
+  {{ style('assets/sweetalert/sweetalert.css') }}
+
+  <!--JS-->
+  <!--{{ script("libs/jquery/jquery/dist/jquery.js") }}-->
+  <!--{{ script("libs/jquery/tether/dist/js/tether.min.js") }}-->
+  <!--{{ script("libs/jquery/bootstrap/dist/js/bootstrap.js") }}-->
+  <!--{{ script("scripts/ui-scroll-to.js") }}-->
+
+  {{ script("scripts/app.html.js") }}
+  {{ script('assets/sweetalert/sweetalert.min.js') }}
+</head>
+<body>
+<div class="app" id="app">
+
+  @if(flashMessage('notification'))
+  <script> swal("Success", "{{ flashMessage('notification') }}", "success") </script>
+  @endif
+
+  @if(flashMessage('error'))
+  <script> swal("Error", "{{ flashMessage('error') }}", "error") </script>
+  @endif
+
+  <!-- ############ LAYOUT START-->
+  <div class="center-block w-xxl w-auto-xs p-y-md">
+    <div class="navbar">
+      <div class="pull-center">
+        <div ui-include="'../views/blocks/navbar.brand.html'"></div>
+      </div>
+    </div>
+    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+      <div class="m-b text-sm">
+        Sign in with your Mailer Account Details
+      </div>
+      <form name="form" action="/login" method="POST">
+        {{ csrfField() }}
+        <div class="md-form-group float-label">
+          <input type="text" class="md-input" name="username" required>
+          <label>Username</label>
+        </div>
+        <div class="md-form-group float-label">
+          <input type="password" class="md-input" name="password" ng-model="user.password" required>
+          <label>Password</label>
+        </div>
+        <!--<div class="m-b-md">-->
+          <!--<label class="md-check">-->
+            <!--<input type="checkbox"><i class="primary"></i> Keep me signed in-->
+          <!--</label>-->
+        <!--</div>-->
+        <button type="submit" class="btn primary btn-block p-x-md">Sign in</button>
+      </form>
+    </div>
+
+    <!--<div class="p-v-lg text-center">-->
+      <!--<div class="m-b"><a ui-sref="access.forgot-password" href="forgot-password.html" class="text-primary _600">Forgot password?</a></div>-->
+      <!--<div>Do not have an account? <a ui-sref="access.signup" href="signup.html" class="text-primary _600">Sign up</a></div>-->
+    <!--</div>-->
+  </div>
+
+  <!-- ############ LAYOUT END-->
+
+</div>
+</body>
+</html>

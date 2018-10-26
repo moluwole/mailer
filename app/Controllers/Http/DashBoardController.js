@@ -76,6 +76,37 @@ class DashBoardController {
     return view.render('dashboard', {totalNumber: totalNumber, totalEmail: totalEmail,
       totalCategory: totalCategory, allMessage: message, numberQueue: number, messageCount: message.length})
   }
+
+  async login({response, request, session}){
+    let {username, password} = request.all()
+
+    if (username === null || username === ""){
+      session.flash({
+        error: 'Username is required'
+      })
+      return response.redirect('back')
+    }
+
+    if (password === null || password === ""){
+      session.flash({
+        error: "Password is required"
+      })
+      return response.redirect('back')
+    }
+
+    if (username === "edentek" && password === "emeraldberyl9764eba"){
+      return response.redirect('/dashboard')
+    }
+
+    session.flash({
+      error: 'Invalid login details. Provide correct login to proceed'
+    })
+    return response.redirect('back')
+  }
+
+  async openPage({view}){
+    return view.render('login')
+  }
 }
 
 module.exports = DashBoardController
