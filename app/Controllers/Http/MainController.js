@@ -3,7 +3,9 @@
 const Request     = require('sync-request')
 const Helpers     = use('Helpers')
 
-const csv         = require('csv')
+const AsyncRequest = require('request')
+
+const csv         = require('csvtojson')
 
 const CronJob     = require('cron').CronJob
 const Message     = use('App/Models/Message')
@@ -110,10 +112,10 @@ class MainController {
       name: csvfile_name
     })
 
-    csv().from.path(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).to.array(async function (data) {
-      for (let index = 1; index < data.length; index++) {
+    csv().fromFile(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).then(async (jsonObj) => {
 
-        if (data[index][0] === null || data[index][0] === "")
+      for (let index = 0; index < jsonObj.length; index++) {
+        if (jsonObj[index]["Surname"] === null || jsonObj[index]["Surname"] === "")
           break
 
         let numberList = new NumberList()
@@ -125,11 +127,11 @@ class MainController {
          * 4 -> Phone Number
          * */
 
-        numberList.surname      = data[index][0]
-        numberList.first_name   = data[index][1]
-        numberList.other_name   = data[index][2]
-        numberList.ward         = data[index][3]
-        numberList.phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+        numberList.surname      = jsonObj[index]["Surname"]
+        numberList.first_name   = jsonObj[index]["First Name"]
+        numberList.other_name   = jsonObj[index]["Other Names"]
+        numberList.ward         = jsonObj[index]["Polling Centre"]
+        numberList.phone_number = jsonObj[index]["Phone Number"].toString().substring(0, 3) !== "234" ? jsonObj[index]["Phone Number"].toString().replace('0', '234') : jsonObj[index]["Phone Number"]
         numberList.state        = state
 
         await numberList.save()
@@ -288,7 +290,6 @@ class MainController {
           //Get the message to send
           let message_res = await Message.find(numberList[i]['message_id'])
           let messageJSON = message_res.toJSON()
-          // console.log(message)
 
           //Parameters to send to the WHATSAPP API message endpoint
           let data = {
@@ -296,31 +297,23 @@ class MainController {
             body: messageJSON['message']
           }
 
-          console.log(data)
-
-          let header = {
-            'Content-Type': 'application/json'
-          }
-
           //Send Message to the Endpoint
-          let messageSender = Request("POST", sendMessageUrl, {
-            headers: header,
-            body: JSON.stringify(data),
-            // json: data
+          AsyncRequest({uri: sendMessageUrl, method: 'POST', json: data}, function (error, response, body) {
+            if (error){
+              console.log(error)
+            }
+
+            //Check if message is sent successfully
+            let responseBody = JSON.parse(body)
+
+            if (responseBody["sent"] === true) {
+              console.log("Message Sent to " + number)
+            }
+            else {
+              console.log("Unable to send message to " + number)
+            }
           })
 
-
-          //Check if message is sent successfully
-          let responseBody = JSON.parse(messageSender.getBody())
-
-          // console.log(responseBody)
-
-          if (responseBody["sent"] === true) {
-            console.log("Message Sent to " + number)
-          }
-          else {
-            console.log("Unable to send message to " + number)
-          }
 
           //Delete the Number from the Database to avoid Repetition
           let currentUser = await Numbers.find(numberList[i]['id'])
