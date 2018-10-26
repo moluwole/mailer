@@ -129,7 +129,7 @@ class MainController {
         numberList.first_name   = data[index][1]
         numberList.other_name   = data[index][2]
         numberList.ward         = data[index][3]
-        numberList.phone_number = data[index][4].toString().indexOf('0') === 0 ? data[index][4].toString().replace('0', '234') : data[index][4]
+        numberList.phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
         numberList.state        = state
 
         await numberList.save()
