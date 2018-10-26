@@ -85,11 +85,11 @@ class SmController {
   }
 
   async sendMessage({view, request, response, session}){
-    let formData = request.collect(['sender', 'message_body', 'phone_type', 'sms_limit', 'random'])
+    let formData = request.collect(['sender', 'message_body', 'state', 'sms_limit', 'random'])
 
     let messageBody = formData[0]['message_body']
     let senderData  = formData[0]['sender']
-    let phoneType   = formData[0]['phone_type']
+    let state   = formData[0]['state']
     let smsLimit    = formData[0]['sms_limit']
     let random      = formData[0]['random']
 
@@ -112,37 +112,36 @@ class SmController {
       return response.redirect('back')
     }
 
-    if (phoneType === null || phoneType === ""){
+    if (state === null || state === ""){
       session.flash({
-        error: 'Select a phone Category to proceed'
+        error: 'Select a State to proceed'
       })
       return response.redirect('back')
     }
 
     let key = this.getKey()
 
-    console.log("KEY: " + key)
+    // console.log("KEY: " + key)
 
     let numberArray = null
 
     /**
      * Check for Category
      */
-    if (phoneType === "All"){
+    if (state === "All"){
       numberArray = await NumberList.all()
     }
     else{
-      numberArray = await NumberList.query().where({type: phoneType}).fetch()
+      numberArray = await NumberList.query().where({state: state}).fetch()
     }
     numberArray = numberArray.toJSON()
 
     /**
      * Check for Random here in order to make it random
      */
-    if (random === true){
+    if (random !== null){
         numberArray = SmController.randomize(numberArray)
     }
-
 
     /**
      * Check SMS Limit and set

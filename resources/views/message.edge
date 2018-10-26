@@ -31,13 +31,46 @@
 
               <div class="form-group row" style="margin-left: 5px; margin-right: 5px; margin-top: 20px;">
                 <label>Choose Category to send to</label>
-                <select class="form-control select2 select2-hidden-accessible" name="phone_type" ui-jp="select2"
+                <select class="form-control select2 select2-hidden-accessible" name="state" ui-jp="select2"
                         ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
-                  <optgroup label="Phone Categories">
+                  <optgroup label="States">
                     <option>All</option>
-                    @each(cat in Types)
-                    <option>{{ cat.types }}</option>
-                    @endeach
+                    <option>Abia</option>
+                    <option>Adamawa</option>
+                    <option>Akwa Ibom</option>
+                    <option>Anambra</option>
+                    <option>Bauchi</option>
+                    <option>Bayelsa</option>
+                    <option>Benue</option>
+                    <option>Borno</option>
+                    <option>Cross River</option>
+                    <option>Delta</option>
+                    <option>Ebonyi</option>
+                    <option>Enugu</option>
+                    <option>Edo</option>
+                    <option>Ekiti</option>
+                    <option>Gombe</option>
+                    <option>Imo</option>
+                    <option>Jigawa</option>
+                    <option>Kaduna</option>
+                    <option>Kano</option>
+                    <option>Katsina</option>
+                    <option>Kebbi</option>
+                    <option>Kogi</option>
+                    <option>Kwara</option>
+                    <option>Lagos</option>
+                    <option>Nasarawa</option>
+                    <option>Niger</option>
+                    <option>Ogun</option>
+                    <option>Ondo</option>
+                    <option>Osun</option>
+                    <option>Oyo</option>
+                    <option>Plateau</option>
+                    <option>Rivers</option>
+                    <option>Sokoto</option>
+                    <option>Taraba</option>
+                    <option>Yobe</option>
+                    <option>Zamfara</option>
                   </optgroup>
                 </select>
               </div>
@@ -89,7 +122,7 @@
                   <tr>
                     <th>#</th>
                     <th>Numbers</th>
-                    <th>Category</th>
+                    <th>State</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -97,7 +130,7 @@
                       <tr>
                         <td>{{ ($loop.index + 1) }}</td>
                         <td>{{ num.phone_number }}</td>
-                        <td>{{ num.type }}</td>
+                        <td>{{ num.state }}</td>
                       </tr>
                     @endeach
                   </tbody>

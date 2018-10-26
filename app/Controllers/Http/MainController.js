@@ -12,8 +12,9 @@ const Moment      = require('moment')
 const Count       = use('App/Models/Count')
 const NumberList  = use("App/Models/NumberList")
 
-const url         = "https://eu19.chat-api.com/instance13237/"
-const token       = "bwoeym1nav2sy1af"
+
+const url         = "https://eu21.chat-api.com/instance13677/"
+const token       = "i49abxx9i0z3nfiv"
 const Type        = use('App/Models/Type')
 
 class MainController {
@@ -81,17 +82,17 @@ class MainController {
 
   async readCsv({session, view, request, response}) {
 
-    let data = request.only(['phone_type'])
-    let phoneType = data['phone_type']
+    let data = request.only(['state'])
+    let state = data['state']
 
-    if (phoneType === null || phoneType === ""){
+    if (state === null || state === ""){
       session.flash({
-        error: 'Choose Phone Type to proceed'
+        error: 'Choose State Phone Numbers Belong to in order to proceed'
       })
       return response.redirect('back')
     }
 
-    var csvfile = request.file('phone_numbers', {
+    let csvfile = request.file('phone_numbers', {
       maxSize: '5mb',
       allowedExtension: ['csv']
     })
@@ -110,12 +111,26 @@ class MainController {
     })
 
     csv().from.path(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).to.array(async function (data) {
-      for (let index = 0; index < data.length; index++) {
+      for (let index = 1; index < data.length; index++) {
+
+        if (data[index][0] === null || data[index][0] === "")
+          break
 
         let numberList = new NumberList()
+        /**
+         * 0 -> Surname
+         * 1 -> first Name
+         * 2 -> Other Names
+         * 3 -> Ward/LGA
+         * 4 -> Phone Number
+         * */
 
-        numberList.phone_number = data[index][0]
-        numberList.type         = phoneType
+        numberList.surname      = data[index][0]
+        numberList.first_name   = data[index][1]
+        numberList.other_name   = data[index][2]
+        numberList.ward         = data[index][3]
+        numberList.phone_number = data[index][4].toString().indexOf('0') === 0 ? data[index][4].toString().replace('0', '234') : data[index][4]
+        numberList.state        = state
 
         await numberList.save()
       }
@@ -129,14 +144,14 @@ class MainController {
   }
 
   async sendMessage({session, view, request, response}) {
-    let data = request.collect(['editordata', 'phone_type'])
+    let data = request.collect(['editordata', 'state'])
 
     let message_ = data[0]['editordata']
-    let phoneType = data[0]['phone_type']
+    let state = data[0]['state']
 
-    if (phoneType === null || phoneType === ""){
+    if (state === null || state === ""){
       session.flash({
-        error: 'Select a Category to send messages to '
+        error: 'Select a State to send messages to '
       })
       return response.redirect('back')
     }
@@ -161,11 +176,11 @@ class MainController {
     //Get Number Array from Session and Save to Database
     let numberArray = null
 
-    if (phoneType === "All"){
+    if (state === "All"){
       numberArray = await NumberList.all()
     }
     else{
-      numberArray = await NumberList.query().where({type: phoneType}).fetch()
+      numberArray = await NumberList.query().where({state: state}).fetch()
     }
 
     numberArray = numberArray.toJSON()

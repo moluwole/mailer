@@ -42,13 +42,13 @@ class DashBoardController {
     /**
      * All the numbers and emails for each Category
      */
-    for (let i = 0; i < category.length; i++){
-      let email = await EmailList.query().where('type', category[i]['types']).fetch()
-      AllEmail.push({type: category[i]['types'], data: email})
-
-      let number = await NumberList.query().where('type', category[i]['types']).fetch()
-      AllNum.push({type:category[i]['types'], data: number})
-    }
+    // for (let i = 0; i < category.length; i++){
+    //   let email = await EmailList.query().where('type', category[i]['types']).fetch()
+    //   AllEmail.push({type: category[i]['types'], data: email})
+    //
+    //   let number = await NumberList.query().where('type', category[i]['types']).fetch()
+    //   AllNum.push({type:category[i]['types'], data: number})
+    // }
 
     /**
      * Get all Messages sent
