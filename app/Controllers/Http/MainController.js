@@ -112,31 +112,63 @@ class MainController {
       name: csvfile_name
     })
 
-    csv().fromFile(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).then(async (jsonObj) => {
+    let csvFile = `${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`
 
-      for (let index = 0; index < jsonObj.length; index++) {
-        if (jsonObj[index]["Surname"] === null || jsonObj[index]["Surname"] === "")
-          break
+    csv().fromFile(csvFile)
+      .subscribe((json)=>{
+        return new Promise(async (resolve, reject) => {
+          // Async operation on the json
+          // don't forget to call resolve and reject
 
-        let numberList = new NumberList()
-        /**
-         * 0 -> Surname
-         * 1 -> first Name
-         * 2 -> Other Names
-         * 3 -> Ward/LGA
-         * 4 -> Phone Number
-         * */
+          let numberList = new NumberList()
+          /**
+           * 0 -> Surname
+           * 1 -> first Name
+           * 2 -> Other Names
+           * 3 -> Ward/LGA
+           * 4 -> Phone Number
+           * */
 
-        numberList.surname      = jsonObj[index]["Surname"]
-        numberList.first_name   = jsonObj[index]["First Name"]
-        numberList.other_name   = jsonObj[index]["Other Names"]
-        numberList.ward         = jsonObj[index]["Polling Centre"]
-        numberList.phone_number = jsonObj[index]["Phone Number"].toString().substring(0, 3) !== "234" ? jsonObj[index]["Phone Number"].toString().replace('0', '234') : jsonObj[index]["Phone Number"]
-        numberList.state        = state
+          numberList.surname      = json["Surname"]
+          numberList.first_name   = json["First Name"]
+          numberList.other_name   = json["Other Names"]
+          numberList.ward         = json["Polling Centre"]
+          numberList.phone_number = json["Phone Number"].toString().substring(0, 3) !== "234" ? json["Phone Number"].toString().replace('0', '234') : json["Phone Number"]
+          numberList.state        = state
 
-        await numberList.save()
-      }
-    })
+          await numberList.save()
+
+          resolve(json)
+        })
+      })
+
+    // console.log(a)
+
+    // csv().fromFile(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).then(async (jsonObj) => {
+    //
+    //   for (let index = 0; index < jsonObj.length; index++) {
+    //     if (jsonObj[index]["Surname"] === null || jsonObj[index]["Surname"] === "")
+    //       break
+    //
+    //     let numberList = new NumberList()
+    //     /**
+    //      * 0 -> Surname
+    //      * 1 -> first Name
+    //      * 2 -> Other Names
+    //      * 3 -> Ward/LGA
+    //      * 4 -> Phone Number
+    //      * */
+    //
+    //     numberList.surname      = jsonObj[index]["Surname"]
+    //     numberList.first_name   = jsonObj[index]["First Name"]
+    //     numberList.other_name   = jsonObj[index]["Other Names"]
+    //     numberList.ward         = jsonObj[index]["Polling Centre"]
+    //     numberList.phone_number = jsonObj[index]["Phone Number"].toString().substring(0, 3) !== "234" ? jsonObj[index]["Phone Number"].toString().replace('0', '234') : jsonObj[index]["Phone Number"]
+    //     numberList.state        = state
+    //
+    //     await numberList.save()
+    //   }
+    // })
 
     session.flash({
       notification : 'Upload Successful. You can view saved Numbers to proceed'
