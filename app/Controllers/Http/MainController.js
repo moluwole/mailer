@@ -7,6 +7,8 @@ const AsyncRequest = require('request')
 
 const csv         = require('csvtojson')
 
+const spawn       = require('threads').spawn
+
 const CronJob     = require('cron').CronJob
 const Message     = use('App/Models/Message')
 const Numbers     = use('App/Models/Number')
@@ -114,33 +116,56 @@ class MainController {
 
     let csvFile = `${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`
 
-    csv().fromFile(csvFile)
-      .subscribe((json)=>{
-        return new Promise(async (resolve, reject) => {
-          // Async operation on the json
-          // don't forget to call resolve and reject
+    const thread = spawn(function(input, done) {
+      // Everything we do here will be run in parallel in another execution context.
+      // Remember that this function will be executed in the thread's context,
+      // so you cannot reference any value of the surrounding code.
+      let file = input.csvFile
+      let csvState = input.csvState
 
-          let numberList = new NumberList()
-          /**
-           * 0 -> Surname
-           * 1 -> first Name
-           * 2 -> Other Names
-           * 3 -> Ward/LGA
-           * 4 -> Phone Number
-           * */
+      csv().fromFile(file)
+        .subscribe((json)=>{
+          return new Promise(async (resolve, reject) => {
+            // Async operation on the json
+            // don't forget to call resolve and reject
 
-          numberList.surname      = json["Surname"]
-          numberList.first_name   = json["First Name"]
-          numberList.other_name   = json["Other Names"]
-          numberList.ward         = json["Polling Centre"]
-          numberList.phone_number = json["Phone Number"].toString().substring(0, 3) !== "234" ? json["Phone Number"].toString().replace('0', '234') : json["Phone Number"]
-          numberList.state        = state
+            let numberList = new NumberList()
+            /**
+             * 0 -> Surname
+             * 1 -> first Name
+             * 2 -> Other Names
+             * 3 -> Ward/LGA
+             * 4 -> Phone Number
+             * */
 
-          await numberList.save()
+            numberList.surname      = json["Surname"]
+            numberList.first_name   = json["First Name"]
+            numberList.other_name   = json["Other Names"]
+            numberList.ward         = json["Polling Centre"]
+            numberList.phone_number = json["Phone Number"].toString().substring(0, 3) !== "234" ? json["Phone Number"].toString().replace('0', '234') : json["Phone Number"]
+            numberList.state        = csvState
 
-          resolve(json)
+            await numberList.save()
+
+            resolve(json)
+          })
         })
+
+      done("Successful");
+    });
+
+    thread.send({ csvFile : csvFile , csvState: state}).on('message', function(response) {
+        if (response === "Successful") {
+          console.log("done")
+        }
+        thread.kill();
       })
+      .on('error', function(error) {
+        console.error('Worker errored:', error);
+      })
+      .on('exit', function() {
+        console.log('Worker has been terminated.');
+      });
 
     // console.log(a)
 
@@ -378,6 +403,7 @@ class MainController {
       console.log("Cron Job Started.")
     }
   }
+
 }
 
 module.exports = MainController
