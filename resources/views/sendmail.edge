@@ -16,11 +16,17 @@
 </style>
 
 <script>
-  function setbg(color)
-  {
-    document.getElementById("styled").style.background=color
-  }
+  $(document).ready(function() {
+    // console.log("Ready");
+    $('#tables_email').DataTable();
+
+    $('#summernote').summernote({
+      height: 300,
+      direction: 'rtl'
+    });
+  });
 </script>
+
 <!-- content -->
 <div id="content" class="app-content box-shadow-z0" role="main">
   <!--{{ phoneNumbers }}-->
@@ -145,25 +151,5 @@
 
 </div>
 
-<script>
-  $(document).ready(function() {
-    // console.log("Ready");
-    $('#tables_email').DataTable();
-
-    $('#summernote').summernote({
-      height: 300,
-      direction: 'rtl'
-      // toolbar: [
-      //   // [groupName, [list of button]]
-      //   ['style', ['bold', 'italic', 'underline', 'clear']],
-      //   ['font', ['strikethrough', 'superscript', 'subscript']],
-      //   ['fontsize', ['fontsize']],
-      //   ['color', ['color']],
-      //   ['para', ['ul', 'ol', 'paragraph']],
-      //   ['height', ['height']]
-      // ]
-    });
-  });
-</script>
 <!-- / -->
 @endsection

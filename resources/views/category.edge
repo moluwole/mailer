@@ -3,6 +3,13 @@
 
 @section('content')
 
+
+<script>
+  $(document).ready(function() {
+    $('#tables_cat').DataTable();
+  })
+</script>
+
 <!-- content -->
 <div id="content" class="app-content box-shadow-z0" role="main">
   <!--{{ phoneNumbers }}-->
@@ -68,10 +75,5 @@
 
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('#tables_cat').DataTable();
-  })
-</script>
 <!-- / -->
 @endsection

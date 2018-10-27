@@ -5,9 +5,9 @@ const Helpers     = use('Helpers')
 
 const AsyncRequest = require('request')
 
-const csv         = require('csvtojson')
+const csv         = require('csv')
 
-const spawn       = require('threads').spawn
+const Database    = use('Database')
 
 const CronJob     = require('cron').CronJob
 const Message     = use('App/Models/Message')
@@ -116,84 +116,36 @@ class MainController {
 
     let csvFile = `${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`
 
-    const thread = spawn(function(input, done) {
-      // Everything we do here will be run in parallel in another execution context.
-      // Remember that this function will be executed in the thread's context,
-      // so you cannot reference any value of the surrounding code.
-      let file = input.csvFile
-      let csvState = input.csvState
+    csv().from.path(csvFile).to.array(async function (data) {
+      let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
+      for (let index = 1; index < data.length; index++) {
 
-      csv().fromFile(file)
-        .subscribe((json)=>{
-          return new Promise(async (resolve, reject) => {
-            // Async operation on the json
-            // don't forget to call resolve and reject
+        if (data[index][0] === null || data[index][0] === "")
+          break
 
-            let numberList = new NumberList()
-            /**
-             * 0 -> Surname
-             * 1 -> first Name
-             * 2 -> Other Names
-             * 3 -> Ward/LGA
-             * 4 -> Phone Number
-             * */
+        /**
+         * 0 -> Surname
+         * 1 -> first Name
+         * 2 -> Other Names
+         * 3 -> Ward/LGA
+         * 4 -> Phone Number
+         * */
 
-            numberList.surname      = json["Surname"]
-            numberList.first_name   = json["First Name"]
-            numberList.other_name   = json["Other Names"]
-            numberList.ward         = json["Polling Centre"]
-            numberList.phone_number = json["Phone Number"].toString().substring(0, 3) !== "234" ? json["Phone Number"].toString().replace('0', '234') : json["Phone Number"]
-            numberList.state        = csvState
+        let surname      = data[index][0]
+        let first_name   = data[index][1]
+        let other_name   = data[index][2]
+        let ward         = data[index][3]
+        let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+        let state_       = state
 
-            await numberList.save()
+        db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state_}'),`
+      }
 
-            resolve(json)
-          })
-        })
+      db_sql = db_sql.substr(0,  db_sql.length - 1)
 
-      done("Successful");
-    });
-
-    thread.send({ csvFile : csvFile , csvState: state}).on('message', function(response) {
-        if (response === "Successful") {
-          console.log("done")
-        }
-        thread.kill();
-      })
-      .on('error', function(error) {
-        console.error('Worker errored:', error);
-      })
-      .on('exit', function() {
-        console.log('Worker has been terminated.');
-      });
-
-    // console.log(a)
-
-    // csv().fromFile(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).then(async (jsonObj) => {
-    //
-    //   for (let index = 0; index < jsonObj.length; index++) {
-    //     if (jsonObj[index]["Surname"] === null || jsonObj[index]["Surname"] === "")
-    //       break
-    //
-    //     let numberList = new NumberList()
-    //     /**
-    //      * 0 -> Surname
-    //      * 1 -> first Name
-    //      * 2 -> Other Names
-    //      * 3 -> Ward/LGA
-    //      * 4 -> Phone Number
-    //      * */
-    //
-    //     numberList.surname      = jsonObj[index]["Surname"]
-    //     numberList.first_name   = jsonObj[index]["First Name"]
-    //     numberList.other_name   = jsonObj[index]["Other Names"]
-    //     numberList.ward         = jsonObj[index]["Polling Centre"]
-    //     numberList.phone_number = jsonObj[index]["Phone Number"].toString().substring(0, 3) !== "234" ? jsonObj[index]["Phone Number"].toString().replace('0', '234') : jsonObj[index]["Phone Number"]
-    //     numberList.state        = state
-    //
-    //     await numberList.save()
-    //   }
-    // })
+      await Database.raw(db_sql)
+      // console.log(db_sql)
+    })
 
     session.flash({
       notification : 'Upload Successful. You can view saved Numbers to proceed'

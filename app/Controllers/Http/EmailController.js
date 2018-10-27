@@ -1,13 +1,14 @@
 'use strict'
 
-const EmailList = use('App/Models/EmailList')
+const EmailList     = use('App/Models/EmailList')
 const Email         = use('App/Models/Email')
 const EmailCount    = use('App/Models/EmailCount')
-const EmailMessage = use('App/Models/EmailMessage')
-const Helpers = use('Helpers')
-const csv = require('csv')
-const Moment = require('moment')
-const Type = use('App/Models/Type')
+const EmailMessage  = use('App/Models/EmailMessage')
+const Helpers       = use('Helpers')
+const csv           = require('csv')
+const Moment        = require('moment')
+const Type          = use('App/Models/Type')
+const Database      = use('Database')
 
 
 class EmailController {
@@ -76,17 +77,20 @@ class EmailController {
     })
 
     csv().from.path(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).to.array(async function (data) {
-      for (let index = 0; index < data.length; index++) {
+      let db_sql = "INSERT INTO email_lists(email, type) VALUES"
+      for (let index = 1; index < data.length; index++) {
 
-        // jsonObject.push(data[index][0])
+        if (data[index][0] === null || data[index][0] === "")
+          break
 
-        let emailList = new EmailList()
+        let email = data[index][0]
+        let type  = emailType
 
-        emailList.email = data[index][0]
-        emailList.type  = emailType
-
-        await emailList.save()
+        db_sql += `('${email}', '${type}'),`
       }
+
+      db_sql = db_sql.substr(0,  db_sql.length - 1)
+      await Database.raw(db_sql)
     })
 
     session.flash({

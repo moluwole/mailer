@@ -3,6 +3,30 @@
 
 @section('content')
 
+<script>
+  $(document).ready(function() {
+    $('#tables_phone').DataTable();
+
+    $('#select_file').change(function () {
+      $('#phone_select').submit()
+    });
+
+    $('#summernote').summernote({
+      height: 300,
+      direction: 'rtl',
+      toolbar: [
+        // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']]
+      ]
+    });
+  });
+</script>
+
 <!-- content -->
 <div id="content" class="app-content box-shadow-z0" role="main">
   <!--{{ phoneNumbers }}-->
@@ -67,29 +91,5 @@
   </div>
 
 </div>
-
-<script>
-  $(document).ready(function() {
-    $('#tables_phone').DataTable();
-
-    $('#select_file').change(function () {
-      $('#phone_select').submit()
-    });
-
-    $('#summernote').summernote({
-      height: 300,
-      direction: 'rtl',
-      toolbar: [
-        // [groupName, [list of button]]
-        ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['strikethrough', 'superscript', 'subscript']],
-        ['fontsize', ['fontsize']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['height', ['height']]
-      ]
-    });
-  });
-</script>
 <!-- / -->
 @endsection

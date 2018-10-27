@@ -2,6 +2,17 @@
 
 @section('content')
 
+<script>
+  $(document).ready(function () {
+
+    $('#tables_email').DataTable();
+
+    $('#file_select').change(function () {
+      $('#email_select').submit()
+    });
+  })
+</script>
+
 <!-- content -->
 <div id="content" class="app-content box-shadow-z0" role="main">
   <div class="padding">
@@ -75,16 +86,5 @@
   </div>
 </div>
 <!--/-->
-
-<script>
-  $(document).ready(function () {
-
-    $('#tables_email').DataTable();
-
-    $('#file_select').change(function () {
-      $('#email_select').submit()
-    });
-  })
-</script>
 
 @endsection
