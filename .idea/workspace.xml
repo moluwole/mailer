@@ -4,14 +4,8 @@
     <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/category.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/category.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/deletecontact.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/deletecontact.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/message.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/message.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sendmail.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sendmail.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/uploadmail.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/uploadmail.edge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/start/routes.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,25 +36,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="ace" value="1" />
           <entry key="css" value="14" />
           <entry key="edge" value="65" />
-          <entry key="env" value="5" />
+          <entry key="editorconfig" value="1" />
+          <entry key="env" value="6" />
           <entry key="gitignore" value="2" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="87" />
+          <entry key="js" value="91" />
           <entry key="map" value="1" />
+          <entry key="md" value="1" />
           <entry key="sess" value="1" />
           <entry key="svg" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key=".env file" value="5" />
+          <entry key=".env file" value="6" />
           <entry key="CSS" value="14" />
           <entry key="HTML" value="64" />
           <entry key="Image" value="1" />
-          <entry key="JavaScript" value="87" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="JavaScript" value="91" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="SVG" value="1" />
         </counts>
       </usages-collector>
@@ -69,14 +67,14 @@
           <entry key="edge" value="7241" />
           <entry key="env" value="118" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="25812" />
+          <entry key="js" value="25815" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="118" />
           <entry key="HTML" value="7230" />
-          <entry key="JavaScript" value="25812" />
+          <entry key="JavaScript" value="25815" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -85,76 +83,66 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
+        <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2760">
-              <caret line="120" column="27" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="276">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/sendmail.edge">
+        <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/qr.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="264">
+              <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ace">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-344" />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4803">
+              <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.editorconfig">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/master.edge">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
               <caret line="91" column="11" lean-forward="true" selection-start-line="91" selection-start-column="11" selection-end-line="100" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/login.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-617">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/deletecontact.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/dashboard.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6575">
-              <caret line="306" selection-start-line="306" selection-end-line="306" />
-              <folding>
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#2;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -168,28 +156,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="805">
-              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="72" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -230,7 +204,6 @@
         <option value="$PROJECT_DIR$/config/database.js" />
         <option value="$PROJECT_DIR$/config/app.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/resources/views/login.edge" />
         <option value="$PROJECT_DIR$/resources/views/dashboard.edge" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/DashBoardController.js" />
@@ -238,7 +211,6 @@
         <option value="$PROJECT_DIR$/resources/views/upload.edge" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/SmController.js" />
         <option value="$PROJECT_DIR$/resources/views/sendsms.edge" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/migrations/1539762294995_email_list_schema.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
@@ -248,6 +220,10 @@
         <option value="$PROJECT_DIR$/resources/views/deletecontact.edge" />
         <option value="$PROJECT_DIR$/resources/views/category.edge" />
         <option value="$PROJECT_DIR$/resources/views/master.edge" />
+        <option value="$PROJECT_DIR$/start/hooks.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/start/routes.js" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -294,19 +270,6 @@
             <path>
               <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -319,17 +282,6 @@
               <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
@@ -394,18 +346,18 @@
       <workItem from="1540211942571" duration="4531000" />
       <workItem from="1540371254655" duration="6165000" />
       <workItem from="1540554584490" duration="9661000" />
-      <workItem from="1540611833930" duration="3225000" />
+      <workItem from="1540611833930" duration="4098000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111192000" />
+    <option name="totallyTimeSpent" value="112065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -419,7 +371,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -432,16 +384,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/start/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/datatables.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/jquery.dataTables.min.js" />
-    <entry file="file://$PROJECT_DIR$/public/assets/images/a1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/font-awesome/css/font-awesome.min.css" />
     <entry file="file://$PROJECT_DIR$/public/assets/animate.css/animate.min.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -510,16 +452,6 @@
     <entry file="file://$PROJECT_DIR$/public/style.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/1540213688567_sms_delivery_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -545,13 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -613,13 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -757,6 +675,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="91" column="11" lean-forward="true" selection-start-line="91" selection-start-column="11" selection-end-line="100" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ace">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-344" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4803">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start/hooks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
