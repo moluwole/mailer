@@ -1,7 +1,6 @@
 'use strict'
 
 const EmailList     = use('App/Models/EmailList')
-const Email         = use('App/Models/Email')
 const EmailCount    = use('App/Models/EmailCount')
 const EmailMessage  = use('App/Models/EmailMessage')
 const Helpers       = use('Helpers')
@@ -9,6 +8,7 @@ const csv           = require('csv')
 const Moment        = require('moment')
 const Type          = use('App/Models/Type')
 const Database      = use('Database')
+const CronJob       = require('cron').CronJob
 
 
 class EmailController {
@@ -72,26 +72,12 @@ class EmailController {
 
     let csvfile_name = `${new Date().getTime()}.${csvfile.subtype}`
 
-    await csvfile.move(Helpers.appRoot('/storage/uploads'), {
+    await csvfile.move(Helpers.appRoot('/storage/uploads/email/'), {
       name: csvfile_name
     })
 
-    csv().from.path(`${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`).to.array(async function (data) {
-      let db_sql = "INSERT INTO email_lists(email, type) VALUES"
-      for (let index = 1; index < data.length; index++) {
+    EmailController.cronCsv()
 
-        if (data[index][0] === null || data[index][0] === "")
-          break
-
-        let email = data[index][0]
-        let type  = emailType
-
-        db_sql += `('${email}', '${type}'),`
-      }
-
-      db_sql = db_sql.substr(0,  db_sql.length - 1)
-      await Database.raw(db_sql)
-    })
 
     session.flash({
       notification : 'Upload Successful. You can view saved Emails to proceed'
@@ -99,6 +85,53 @@ class EmailController {
 
     return response.redirect('back')
   }
+
+  static cronCsv(type){
+    let stopCron = false
+    const baseDir = `${Helpers.appRoot('/storage/uploads/email/')}`
+
+    const job = new CronJob('30 * * * * *', function () {
+      let files = fs.readdirSync(baseDir)
+      if (files.length <= 0){
+        stopCron = true
+      }
+      else{
+        for (let singleFile in files){
+          let csvFile = `${baseDir}${files[singleFile]}`
+          console.log(csvFile)
+
+          csv().from.path(csvFile).to.array(async function (data) {
+            let db_sql = "INSERT INTO email_lists(email, type) VALUES"
+            for (let index = 1; index < data.length; index++) {
+
+              if (data[index][0] === null || data[index][0] === "")
+                break
+
+              let email = data[index][0]
+
+              db_sql += `('${email}', '${type}'),`
+            }
+
+            db_sql = db_sql.substr(0,  db_sql.length - 1)
+            await Database.raw(db_sql)
+          })
+
+        }
+      }
+    })
+
+    if (stopCron) {
+      if (job.isRunning()){
+        job.destroy()
+        console.log("Cron Job stopped. Reason: " + reason)
+      }
+    }
+    else {
+      job.start()
+      console.log("Cron Job Started.")
+    }
+  }
+
 
   async messages({view}){
     const emailList = await EmailList.all()

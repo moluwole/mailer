@@ -23,7 +23,7 @@ new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)
   .fireHttpServer()
   .catch(console.error)
-  .then(() => {
-    use('Adonis/Src/Server').getInstance().timeout = 0;
-    use('Logger').info(`Server timeout: ${use('Adonis/Src/Server').getInstance().timeout}`);
-  })
+  // .then(() => {
+  //   use('Adonis/Src/Server').getInstance().timeout = 0;
+  //   use('Logger').info(`Server timeout: ${use('Adonis/Src/Server').getInstance().timeout}`);
+  // })

@@ -2,6 +2,7 @@
 
 const Request     = require('sync-request')
 const Helpers     = use('Helpers')
+const fs          = require('fs')
 
 const AsyncRequest = require('request')
 
@@ -114,38 +115,9 @@ class MainController {
       name: csvfile_name
     })
 
-    let csvFile = `${Helpers.appRoot('/storage/uploads/')}${csvfile_name}`
+    MainController.cronCsv(state)
 
-    csv().from.path(csvFile).to.array(async function (data) {
-      let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
-      for (let index = 1; index < data.length; index++) {
-
-        if (data[index][0] === null || data[index][0] === "")
-          break
-
-        /**
-         * 0 -> Surname
-         * 1 -> first Name
-         * 2 -> Other Names
-         * 3 -> Ward/LGA
-         * 4 -> Phone Number
-         * */
-
-        let surname      = data[index][0]
-        let first_name   = data[index][1]
-        let other_name   = data[index][2]
-        let ward         = data[index][3]
-        let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
-        let state_       = state
-
-        db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state_}'),`
-      }
-
-      db_sql = db_sql.substr(0,  db_sql.length - 1)
-
-      await Database.raw(db_sql)
-      // console.log(db_sql)
-    })
+    // let csvFile = `${Helpers.appRoot('/storage/uploads/phone/')}${csvfile_name}`
 
     session.flash({
       notification : 'Upload Successful. You can view saved Numbers to proceed'
@@ -243,6 +215,65 @@ class MainController {
       notification : 'Phone Number '+ number + ' was deleted successfully'
     })
     return response.redirect('back')
+  }
+
+  static cronCsv(state){
+    let stopCron = false
+    const baseDir = `${Helpers.appRoot('/storage/uploads/phone/')}`
+
+    const job = new CronJob('30 * * * * *', function () {
+      let files = fs.readdirSync(baseDir)
+      if (files.length <= 0){
+        stopCron = true
+      }
+      else{
+        for (let singleFile in files){
+          let csvFile = `${baseDir}${files[singleFile]}`
+          console.log(csvFile)
+          csv().from.path(csvFile).to.array(async function (data) {
+            let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
+            for (let index = 1; index < data.length; index++) {
+
+              if (data[index][0] === null || data[index][0] === "")
+                break
+
+              /**
+               * 0 -> Surname
+               * 1 -> first Name
+               * 2 -> Other Names
+               * 3 -> Ward/LGA
+               * 4 -> Phone Number
+               * */
+
+              let surname      = data[index][0]
+              let first_name   = data[index][1]
+              let other_name   = data[index][2]
+              let ward         = data[index][3]
+              let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+              db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+            }
+
+            db_sql = db_sql.substr(0,  db_sql.length - 1)
+
+            await Database.raw(db_sql)
+
+            fs.unlinkSync(csvFile)
+            // console.log(db_sql)
+          })
+        }
+      }
+    })
+
+    if (stopCron) {
+      if (job.isRunning()){
+        job.destroy()
+        console.log("Cron Job stopped. Reason: " + reason)
+      }
+    }
+    else {
+      job.start()
+      console.log("Cron Job Started.")
+    }
   }
 
   static cronJob() {
@@ -346,7 +377,7 @@ class MainController {
 
     if (stopCron) {
       if (job.isRunning()){
-        job.stop()
+        job.destroy()
         console.log("Cron Job stopped. Reason: " + reason)
       }
     }
