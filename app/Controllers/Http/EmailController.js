@@ -79,7 +79,7 @@ class EmailController {
     let csvFile = `${Helpers.appRoot('/storage/uploads/email/')}${csvfile_name}`
 
     csv().from.path(csvFile).to.array(async function (data) {
-      let db_sql = "INSERT INTO email_lists(email, type) VALUES"
+      // let db_sql = "INSERT INTO email_lists(email, type) VALUES"
       for (let index = 1; index < data.length; index++) {
 
         if (data[index][0] === null || data[index][0] === "")
@@ -87,11 +87,18 @@ class EmailController {
 
         let email = data[index][0]
 
-        db_sql += `('${email}', '${type}'),`
+        let emailList = new EmailList()
+
+        emailList.email = email
+        emailList.type  = type
+
+        await emailList.save()
+
+        // db_sql += `('${email}', '${type}'),`
       }
 
-      db_sql = db_sql.substr(0,  db_sql.length - 1)
-      await Database.raw(db_sql)
+      // db_sql = db_sql.substr(0,  db_sql.length - 1)
+      // await Database.raw(db_sql)
 
       fs.unlinkSync(csvFile)
     })

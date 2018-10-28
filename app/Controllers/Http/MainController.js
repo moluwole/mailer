@@ -118,7 +118,7 @@ class MainController {
 
     let csvFile = `${Helpers.appRoot('/storage/uploads/phone/')}${csvfile_name}`
     csv().from.path(csvFile).to.array(async function (data) {
-      let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
+      // let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
       for (let index = 1; index < data.length; index++) {
 
         if (data[index][4] === null || data[index][4] === "")
@@ -137,12 +137,22 @@ class MainController {
           let other_name   = data[index][2]
           let ward         = data[index][3]
           let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
-          db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+          // db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+
+        let numberList = new NumberList()
+
+        numberList.surname      = surname
+        numberList.first_name   = first_name
+        numberList.other_name   = other_name
+        numberList.ward         = ward
+        numberList.phone_number = phone_number
+
+        await numberList.save()
       }
 
-      db_sql = db_sql.substr(0,  db_sql.length - 1)
+      // db_sql = db_sql.substr(0,  db_sql.length - 1)
 
-      await Database.raw(db_sql)
+      // await Database.raw(db_sql)
 
       fs.unlinkSync(csvFile)
     })
