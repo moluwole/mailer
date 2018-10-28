@@ -132,12 +132,12 @@ class MainController {
          * 4 -> Phone Number
          * */
 
-        let surname      = data[index][0]
-        let first_name   = data[index][1]
-        let other_name   = data[index][2]
-        let ward         = data[index][3]
-        let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
-        db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+          let surname      = data[index][0]
+          let first_name   = data[index][1]
+          let other_name   = data[index][2]
+          let ward         = data[index][3]
+          let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+          db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
       }
 
       db_sql = db_sql.substr(0,  db_sql.length - 1)
