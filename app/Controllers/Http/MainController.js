@@ -136,8 +136,16 @@ class MainController {
           let first_name   = data[index][1]
           let other_name   = data[index][2]
           let ward         = data[index][3]
-          let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+          let phone_number = data[index][4].toString()//.substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
           // db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+
+        if (phone_number.substring(0, 3) !== 234){
+          if (phone_number.charAt(0) === '0'){
+            phone_number = phone_number.replace('0', '234')
+          } else {
+            phone_number = '234'+ phone_number
+          }
+        }
 
         let numberList = new NumberList()
 
