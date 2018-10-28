@@ -87,15 +87,15 @@ class MainController {
 
   async readCsv({session, view, request, response}) {
 
-    let data = request.only(['state'])
-    let state = data['state']
-
-    if (state === null || state === ""){
-      session.flash({
-        error: 'Choose State Phone Numbers Belong to in order to proceed'
-      })
-      return response.redirect('back')
-    }
+    // let data = request.only(['state'])
+    // let state = data['state']
+    //
+    // if (state === null || state === ""){
+    //   session.flash({
+    //     error: 'Choose State Phone Numbers Belong to in order to proceed'
+    //   })
+    //   return response.redirect('back')
+    // }
 
     let csvfile = request.file('phone_numbers', {
       maxSize: '20mb',
