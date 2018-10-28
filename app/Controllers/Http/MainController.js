@@ -121,7 +121,7 @@ class MainController {
       let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
       for (let index = 1; index < data.length; index++) {
 
-        if (data[index][0] === null || data[index][0] === "")
+        if (data[index][4] === null || data[index][4] === "")
           break
 
         /**
