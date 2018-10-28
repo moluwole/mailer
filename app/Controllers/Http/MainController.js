@@ -98,7 +98,7 @@ class MainController {
     }
 
     let csvfile = request.file('phone_numbers', {
-      maxSize: '5mb',
+      maxSize: '20mb',
       allowedExtension: ['csv']
     })
 
