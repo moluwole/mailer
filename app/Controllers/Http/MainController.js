@@ -115,7 +115,7 @@ class MainController {
       name: csvfile_name
     })
 
-    MainController.cronCsv(state)
+    // MainController.cronCsv(state)
 
     // let csvFile = `${Helpers.appRoot('/storage/uploads/phone/')}${csvfile_name}`
 
