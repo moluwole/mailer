@@ -8,7 +8,7 @@ const csv           = require('csv')
 const Moment        = require('moment')
 const Type          = use('App/Models/Type')
 const Database      = use('Database')
-const CronJob       = require('cron').CronJob
+const fs            = require('fs')
 
 
 class EmailController {
@@ -76,8 +76,25 @@ class EmailController {
       name: csvfile_name
     })
 
-    EmailController.cronCsv()
+    let csvFile = `${Helpers.appRoot('/storage/uploads/email/')}${csvfile_name}`
 
+    csv().from.path(csvFile).to.array(async function (data) {
+      let db_sql = "INSERT INTO email_lists(email, type) VALUES"
+      for (let index = 1; index < data.length; index++) {
+
+        if (data[index][0] === null || data[index][0] === "")
+          break
+
+        let email = data[index][0]
+
+        db_sql += `('${email}', '${type}'),`
+      }
+
+      db_sql = db_sql.substr(0,  db_sql.length - 1)
+      await Database.raw(db_sql)
+
+      fs.unlinkSync(csvFile)
+    })
 
     session.flash({
       notification : 'Upload Successful. You can view saved Emails to proceed'
@@ -86,51 +103,37 @@ class EmailController {
     return response.redirect('back')
   }
 
-  static cronCsv(type){
-    let stopCron = false
-    const baseDir = `${Helpers.appRoot('/storage/uploads/email/')}`
-
-    const job = new CronJob('30 * * * * *', function () {
-      let files = fs.readdirSync(baseDir)
-      if (files.length <= 0){
-        stopCron = true
-      }
-      else{
-        for (let singleFile in files){
-          let csvFile = `${baseDir}${files[singleFile]}`
-          console.log(csvFile)
-
-          csv().from.path(csvFile).to.array(async function (data) {
-            let db_sql = "INSERT INTO email_lists(email, type) VALUES"
-            for (let index = 1; index < data.length; index++) {
-
-              if (data[index][0] === null || data[index][0] === "")
-                break
-
-              let email = data[index][0]
-
-              db_sql += `('${email}', '${type}'),`
-            }
-
-            db_sql = db_sql.substr(0,  db_sql.length - 1)
-            await Database.raw(db_sql)
-          })
-
-        }
-      }
-    })
-
-    if (stopCron) {
-      if (job.isRunning()){
-        job.destroy()
-        console.log("Cron Job stopped. Reason: " + reason)
-      }
-    }
-    else {
-      job.start()
-      console.log("Cron Job Started.")
-    }
-  }
+  // static cronCsv(type){
+  //   let stopCron = false
+  //   const baseDir = `${Helpers.appRoot('/storage/uploads/email/')}`
+  //
+  //   const job = new CronJob('30 * * * * *', function () {
+  //     let files = fs.readdirSync(baseDir)
+  //     if (files.length <= 0){
+  //       stopCron = true
+  //     }
+  //     else{
+  //       for (let singleFile in files){
+  //         let csvFile = `${baseDir}${files[singleFile]}`
+  //         console.log(csvFile)
+  //
+  //
+  //
+  //       }
+  //     }
+  //   })
+  //
+  //   if (stopCron) {
+  //     if (job.isRunning()){
+  //       job.destroy()
+  //       console.log("Cron Job stopped. Reason: " + reason)
+  //     }
+  //   }
+  //   else {
+  //     job.start()
+  //     console.log("Cron Job Started.")
+  //   }
+  // }
 
 
   async messages({view}){

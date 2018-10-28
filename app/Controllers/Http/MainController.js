@@ -87,15 +87,15 @@ class MainController {
 
   async readCsv({session, view, request, response}) {
 
-    // let data = request.only(['state'])
-    // let state = data['state']
-    //
-    // if (state === null || state === ""){
-    //   session.flash({
-    //     error: 'Choose State Phone Numbers Belong to in order to proceed'
-    //   })
-    //   return response.redirect('back')
-    // }
+    let data = request.only(['state'])
+    let state = data['state']
+
+    if (state === null || state === ""){
+      session.flash({
+        error: 'Choose State Phone Numbers Belong to in order to proceed'
+      })
+      return response.redirect('back')
+    }
 
     let csvfile = request.file('phone_numbers', {
       maxSize: '20mb',
@@ -111,13 +111,41 @@ class MainController {
 
     let csvfile_name = `${new Date().getTime()}.${csvfile.subtype}`
 
-    await csvfile.move(Helpers.appRoot('/storage/uploads'), {
+    await csvfile.move(Helpers.appRoot('/storage/uploads/phone/'), {
       name: csvfile_name
     })
 
-    // MainController.cronCsv(state)
 
-    // let csvFile = `${Helpers.appRoot('/storage/uploads/phone/')}${csvfile_name}`
+    let csvFile = `${Helpers.appRoot('/storage/uploads/phone/')}${csvfile_name}`
+    csv().from.path(csvFile).to.array(async function (data) {
+      let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
+      for (let index = 1; index < data.length; index++) {
+
+        if (data[index][0] === null || data[index][0] === "")
+          break
+
+        /**
+         * 0 -> Surname
+         * 1 -> first Name
+         * 2 -> Other Names
+         * 3 -> Ward/LGA
+         * 4 -> Phone Number
+         * */
+
+        let surname      = data[index][0]
+        let first_name   = data[index][1]
+        let other_name   = data[index][2]
+        let ward         = data[index][3]
+        let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
+        db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
+      }
+
+      db_sql = db_sql.substr(0,  db_sql.length - 1)
+
+      await Database.raw(db_sql)
+
+      fs.unlinkSync(csvFile)
+    })
 
     session.flash({
       notification : 'Upload Successful. You can view saved Numbers to proceed'
@@ -217,64 +245,35 @@ class MainController {
     return response.redirect('back')
   }
 
-  static cronCsv(state){
-    let stopCron = false
-    const baseDir = `${Helpers.appRoot('/storage/uploads/phone/')}`
-
-    const job = new CronJob('30 * * * * *', function () {
-      let files = fs.readdirSync(baseDir)
-      if (files.length <= 0){
-        stopCron = true
-      }
-      else{
-        for (let singleFile in files){
-          let csvFile = `${baseDir}${files[singleFile]}`
-          console.log(csvFile)
-          csv().from.path(csvFile).to.array(async function (data) {
-            let db_sql = "INSERT INTO number_lists(surname, first_name, other_name, ward, phone_number, state) VALUES"
-            for (let index = 1; index < data.length; index++) {
-
-              if (data[index][0] === null || data[index][0] === "")
-                break
-
-              /**
-               * 0 -> Surname
-               * 1 -> first Name
-               * 2 -> Other Names
-               * 3 -> Ward/LGA
-               * 4 -> Phone Number
-               * */
-
-              let surname      = data[index][0]
-              let first_name   = data[index][1]
-              let other_name   = data[index][2]
-              let ward         = data[index][3]
-              let phone_number = data[index][4].toString().substring(0, 3) !== "234" ? data[index][4].toString().replace('0', '234') : data[index][4]
-              db_sql += `('${surname}', '${first_name}', '${other_name}', '${ward}', '${phone_number}', '${state}'),`
-            }
-
-            db_sql = db_sql.substr(0,  db_sql.length - 1)
-
-            await Database.raw(db_sql)
-
-            fs.unlinkSync(csvFile)
-            // console.log(db_sql)
-          })
-        }
-      }
-    })
-
-    if (stopCron) {
-      if (job.isRunning()){
-        job.destroy()
-        console.log("Cron Job stopped. Reason: " + reason)
-      }
-    }
-    else {
-      job.start()
-      console.log("Cron Job Started.")
-    }
-  }
+  // static cronCsv(state){
+  //   let stopCron = false
+  //   const baseDir = `${Helpers.appRoot('/storage/uploads/phone/')}`
+  //
+  //   const job = new CronJob('30 * * * * *', function () {
+  //     let files = fs.readdirSync(baseDir)
+  //     if (files.length <= 0){
+  //       stopCron = true
+  //     }
+  //     else{
+  //       for (let singleFile in files){
+  //         let csvFile = `${baseDir}${files[singleFile]}`
+  //         console.log(csvFile)
+  //
+  //       }
+  //     }
+  //   })
+  //
+  //   if (stopCron) {
+  //     if (job.isRunning()){
+  //       job.destroy()
+  //       console.log("Cron Job stopped. Reason: " + reason)
+  //     }
+  //   }
+  //   else {
+  //     job.start()
+  //     console.log("Cron Job Started.")
+  //   }
+  // }
 
   static cronJob() {
 
