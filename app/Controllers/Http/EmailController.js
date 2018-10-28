@@ -49,11 +49,11 @@ class EmailController {
 
     let data = request.only(['email_type'])
 
-    let emailType = data['email_type']
+    let emailState = data['email_type']
 
-    if (emailType === null || emailType === ""){
+    if (emailState === null || emailState === ""){
       session.flash({
-        error: 'Select a type to save Emails as'
+        error: 'Select a State to save Emails to'
       })
       return response.redirect('back')
     }
@@ -90,7 +90,7 @@ class EmailController {
         let emailList = new EmailList()
 
         emailList.email = email
-        emailList.type  = type
+        emailList.type  = emailState
 
         await emailList.save()
 

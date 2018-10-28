@@ -154,6 +154,7 @@ class MainController {
         numberList.other_name   = other_name
         numberList.ward         = ward
         numberList.phone_number = phone_number
+        numberList.state        = state
 
         await numberList.save()
       }
