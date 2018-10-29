@@ -5,6 +5,7 @@ const Type        = use('App/Models/Type')
 const SmsDelivery = use('App/Models/SmsDelivery')
 const Request     = require('sync-request')
 const Message     = use('App/Models/Message')
+const Database    = use('Database')
 
 const baseURL = "https://wv4mr.api.infobip.com"
 const accountKey = "99DC66E6B63F49DFA7035E464CEA1FC8"
@@ -76,12 +77,16 @@ class SmController {
   }
 
   async message({view}){
-    const numbersList = await NumberList.all()
-    let numbers = numbersList.toJSON()
 
-    const typelist = await Type.all()
-    let type = typelist.toJSON()
-    return view.render('sendsms', { phoneNumbers: numbers, Types: type })
+    let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
+      '((SELECT MAX(id) FROM number_lists) - (SELECT MIN(id) FROM number_lists) + 1) * RAND()) AS id FROM number_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    const numbersList = await Database.raw(query)
+
+    // const typelist = await Type.all()
+    // let type = typelist.toJSON()
+    return view.render('sendsms', { phoneNumbers: numbersList[0] })
   }
 
   async sendMessage({view, request, response, session}){
