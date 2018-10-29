@@ -371,21 +371,45 @@ class MainController {
           }
 
           //Send Message to the Endpoint
-          AsyncRequest({uri: sendMessageUrl, method: 'POST', json: data}, function (error, response, body) {
-            if (error){
-              console.log(error)
+
+          try {
+            let header = {
+              'Content-Type': 'application/json'
             }
+
+            let messageSender = Request("POST", sendMessageUrl, {
+              headers: header,
+              body: JSON.stringify(data),
+            })
 
             //Check if message is sent successfully
-            let responseBody = JSON.parse(body)
-
+            let responseBody = JSON.parse(messageSender.getBody())
             if (responseBody["sent"] === true) {
               console.log("Message Sent to " + number)
-            }
-            else {
+            }else {
               console.log("Unable to send message to " + number)
             }
-          })
+          }
+          catch (e) {
+            console.log(e)
+          }
+
+
+          // AsyncRequest({uri: sendMessageUrl, method: 'POST', json: data}, function (error, response, body) {
+          //   if (error){
+          //     console.log(error)
+          //   }
+          //
+          //   //Check if message is sent successfully
+          //   let responseBody = JSON.parse(body)
+          //
+          //   if (responseBody["sent"] === true) {
+          //     console.log("Message Sent to " + number)
+          //   }
+          //   else {
+          //     console.log("Unable to send message to " + number)
+          //   }
+          // })
 
 
           //Delete the Number from the Database to avoid Repetition
