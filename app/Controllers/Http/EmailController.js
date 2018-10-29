@@ -87,19 +87,18 @@ class EmailController {
 
         let email = data[index][0]
 
-        let emailList = new EmailList()
+        try {
+          let emailList = new EmailList()
 
-        emailList.email = email
-        emailList.type  = emailState
+          emailList.email = email
+          emailList.type  = emailState
 
-        await emailList.save()
-
-        // db_sql += `('${email}', '${type}'),`
+          await emailList.save()
+        }
+        catch (e) {
+          console.log(e)
+        }
       }
-
-      // db_sql = db_sql.substr(0,  db_sql.length - 1)
-      // await Database.raw(db_sql)
-
       fs.unlinkSync(csvFile)
     })
 

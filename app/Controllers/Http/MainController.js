@@ -147,16 +147,21 @@ class MainController {
           }
         }
 
-        let numberList = new NumberList()
+        try {
+          let numberList = new NumberList()
 
-        numberList.surname      = surname
-        numberList.first_name   = first_name
-        numberList.other_name   = other_name
-        numberList.ward         = ward
-        numberList.phone_number = phone_number
-        numberList.state        = state
+          numberList.surname      = surname
+          numberList.first_name   = first_name
+          numberList.other_name   = other_name
+          numberList.ward         = ward
+          numberList.phone_number = phone_number
+          numberList.state        = state
 
-        await numberList.save()
+          await numberList.save()
+        }
+        catch (e) {
+          console.log(e)
+        }
       }
 
       // db_sql = db_sql.substr(0,  db_sql.length - 1)
