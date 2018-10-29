@@ -25,7 +25,11 @@ const Type        = use('App/Models/Type')
 class MainController {
 
   async loadContacts({view}){
-    const numbersList = await NumberList.all()
+    let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
+      '((SELECT MAX(id) FROM number_lists) - (SELECT MIN(id) FROM number_lists) + 1) * RAND()) AS id FROM number_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    const numbersList = await Database.raw(query)
     let numbers = numbersList.toJSON()
 
     const typelist = await Type.all()
@@ -47,13 +51,19 @@ class MainController {
   }
 
   async messages({view}){
-    const numbersList = await NumberList.all()
-    let numbers = numbersList.toJSON()
 
-    const typelist = await Type.all()
-    let type = typelist.toJSON()
+    let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
+      '((SELECT MAX(id) FROM number_lists) - (SELECT MIN(id) FROM number_lists) + 1) * RAND()) AS id FROM number_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
 
-    return view.render('message', { phoneNumbers: numbers, Types: type })
+    let numberList = await Database.raw(query)
+    // const numbersList = await NumberList.all()
+    let numbers = numberList.toJSON()
+
+    // const typelist = await Type.all()
+    // let type = typelist.toJSON()
+
+    return view.render('message', { phoneNumbers: numbers })
   }
 
   async status({session, view, request, response}) {
@@ -237,14 +247,19 @@ class MainController {
   }
 
   async loadNumber({view}){
-    const numbersList = await NumberList.all()
+
+    let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
+      '((SELECT MAX(id) FROM number_lists) - (SELECT MIN(id) FROM number_lists) + 1) * RAND()) AS id FROM number_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    const numbersList = await Database.raw(query)
 
     let numbers = numbersList.toJSON()
 
-    const typelist = await Type.all()
-    let type = typelist.toJSON()
+    // const typelist = await Type.all()
+    // let type = typelist.toJSON()
 
-    return view.render('upload', { phoneNumbers: numbers, Types: type})
+    return view.render('upload', { phoneNumbers: numbers})
   }
 
   async blackList({session, view, request, response}){
