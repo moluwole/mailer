@@ -63,14 +63,14 @@
           <entry key="edge" value="7320" />
           <entry key="env" value="146" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="27410" />
+          <entry key="js" value="27497" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="146" />
           <entry key="HTML" value="7309" />
-          <entry key="JavaScript" value="27410" />
+          <entry key="JavaScript" value="27497" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -107,8 +107,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2022">
-              <caret line="256" column="76" selection-start-line="256" selection-start-column="76" selection-end-line="256" selection-end-column="76" />
+            <state relative-caret-position="172">
+              <caret line="388" column="19" lean-forward="true" selection-start-line="388" selection-start-column="19" selection-end-line="388" selection-end-column="19" />
               <folding>
                 <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
                 <element signature="n#!!block;n#test#0;n#MainController#0" />
@@ -119,8 +119,6 @@
                 <element signature="n#!!block;n#readCsv#0;n#MainController#0" />
                 <element signature="n#!!block;n#sendMessage#0;n#MainController#0" />
                 <element signature="n#!!block;n#blackList#0;n#MainController#0" />
-                <element signature="e#10389#10437#0" />
-                <element signature="e#10587#10657#0" />
               </folding>
             </state>
           </provider>
@@ -259,12 +257,12 @@
         <option value="$PROJECT_DIR$/app/Controllers/Http/SmController.js" />
         <option value="$PROJECT_DIR$/resources/views/sendmail.edge" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
         <option value="$PROJECT_DIR$/resources/views/upload.edge" />
         <option value="$PROJECT_DIR$/resources/views/uploadmail.edge" />
         <option value="$PROJECT_DIR$/resources/views/message.edge" />
         <option value="$PROJECT_DIR$/resources/views/sendsms.edge" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
       </list>
     </option>
   </component>
@@ -339,12 +337,6 @@
             <path>
               <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
               <item name="start" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -408,18 +400,17 @@
       <workItem from="1540554584490" duration="9661000" />
       <workItem from="1540611833930" duration="4728000" />
       <workItem from="1540673441420" duration="8996000" />
-      <workItem from="1540753577286" duration="8492000" />
+      <workItem from="1540753577286" duration="8748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130183000" />
+    <option name="totallyTimeSpent" value="130439000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -433,7 +424,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -767,8 +758,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2022">
-          <caret line="256" column="76" selection-start-line="256" selection-start-column="76" selection-end-line="256" selection-end-column="76" />
+        <state relative-caret-position="172">
+          <caret line="388" column="19" lean-forward="true" selection-start-line="388" selection-start-column="19" selection-end-line="388" selection-end-column="19" />
           <folding>
             <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
             <element signature="n#!!block;n#test#0;n#MainController#0" />
@@ -779,8 +770,6 @@
             <element signature="n#!!block;n#readCsv#0;n#MainController#0" />
             <element signature="n#!!block;n#sendMessage#0;n#MainController#0" />
             <element signature="n#!!block;n#blackList#0;n#MainController#0" />
-            <element signature="e#10389#10437#0" />
-            <element signature="e#10587#10657#0" />
           </folding>
         </state>
       </provider>

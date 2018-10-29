@@ -391,7 +391,7 @@ class MainController {
             }
           }
           catch (e) {
-            console.log(e)
+            console.log("Unable to send message: " + e)
           }
 
 
