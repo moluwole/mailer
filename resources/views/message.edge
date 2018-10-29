@@ -47,7 +47,7 @@
             <form action="/sendmessage" method="POST">
               {{ csrfField() }}
               <textarea name="editordata" id="styled" class="form-control" rows="9" placeholder="Message Body"
-                        onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+                        onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
 
               <div class="form-group row" style="margin-left: 5px; margin-right: 5px; margin-top: 20px;">
                 <label>Choose Category to send to</label>

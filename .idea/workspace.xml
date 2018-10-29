@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/SmController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/SmController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/message.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/message.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sendmail.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sendmail.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sendsms.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sendsms.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/upload.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/upload.edge" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,7 +36,7 @@
         <counts>
           <entry key="ace" value="1" />
           <entry key="css" value="14" />
-          <entry key="edge" value="81" />
+          <entry key="edge" value="84" />
           <entry key="editorconfig" value="1" />
           <entry key="env" value="7" />
           <entry key="gitignore" value="2" />
@@ -59,7 +52,7 @@
         <counts>
           <entry key=".env file" value="7" />
           <entry key="CSS" value="14" />
-          <entry key="HTML" value="80" />
+          <entry key="HTML" value="83" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="102" />
           <entry key="Markdown" value="1" />
@@ -69,7 +62,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="edge" value="7283" />
+          <entry key="edge" value="7320" />
           <entry key="env" value="146" />
           <entry key="gitignore" value="26" />
           <entry key="js" value="27410" />
@@ -78,7 +71,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="146" />
-          <entry key="HTML" value="7272" />
+          <entry key="HTML" value="7309" />
           <entry key="JavaScript" value="27410" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
@@ -92,15 +85,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
               <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="747">
-              <caret line="84" column="52" lean-forward="true" selection-start-line="84" selection-start-column="52" selection-end-line="84" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -146,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/category.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-241">
+            <state relative-caret-position="230">
               <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
             </state>
           </provider>
@@ -164,46 +148,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/uploadmail.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-412">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="777">
+              <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/sendmail.edge">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
+        <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SmController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
-              <folding>
-                <element signature="n#!!block;n#getKey#0;n#SmController#0" />
-                <element signature="n#!!block;n#createKey#0;n#SmController#0" />
-                <element signature="n#!!block;n#message#0;n#SmController#0" />
-                <element signature="n#!!block;n#sendMessage#0;n#SmController#0" />
-                <element signature="n#!!block;n#getDeliveryReport#0;n#SmController#0" />
-                <element signature="n#!!block;n#randomize#0;n#SmController#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/DashBoardController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="20" column="49" lean-forward="true" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-              <folding>
-                <element signature="n#!!block;n#login#0;n#DashBoardController#0" />
-              </folding>
+            <state relative-caret-position="1149">
+              <caret line="57" column="39" lean-forward="true" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -264,7 +250,6 @@
         <option value="$PROJECT_DIR$/resources/views/dashboard.edge" />
         <option value="$PROJECT_DIR$/database/migrations/1539709369539_number_list_schema.js" />
         <option value="$PROJECT_DIR$/database/migrations/1539762294995_email_list_schema.js" />
-        <option value="$PROJECT_DIR$/resources/views/uploadmail.edge" />
         <option value="$PROJECT_DIR$/resources/views/deletecontact.edge" />
         <option value="$PROJECT_DIR$/resources/views/category.edge" />
         <option value="$PROJECT_DIR$/resources/views/master.edge" />
@@ -275,11 +260,12 @@
         <option value="$PROJECT_DIR$/app/Controllers/Http/SmController.js" />
         <option value="$PROJECT_DIR$/resources/views/sendsms.edge" />
         <option value="$PROJECT_DIR$/resources/views/sendmail.edge" />
-        <option value="$PROJECT_DIR$/resources/views/message.edge" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/views/upload.edge" />
+        <option value="$PROJECT_DIR$/resources/views/uploadmail.edge" />
+        <option value="$PROJECT_DIR$/resources/views/message.edge" />
       </list>
     </option>
   </component>
@@ -423,12 +409,12 @@
       <workItem from="1540554584490" duration="9661000" />
       <workItem from="1540611833930" duration="4728000" />
       <workItem from="1540673441420" duration="8996000" />
-      <workItem from="1540753577286" duration="7480000" />
+      <workItem from="1540753577286" duration="7942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129171000" />
+    <option name="totallyTimeSpent" value="129633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -640,24 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/sendmail.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/qr.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -695,13 +663,6 @@
             <element signature="n#div#3;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#div#2;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="84" column="52" lean-forward="true" selection-start-line="84" selection-start-column="52" selection-end-line="84" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -771,13 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/category.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-241">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -785,17 +739,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/uploadmail.edge">
+    <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="306">
+          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
+    <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        <state relative-caret-position="299">
+          <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/sendmail.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/uploadmail.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/category.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1149">
+          <caret line="57" column="39" lean-forward="true" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
         </state>
       </provider>
     </entry>
