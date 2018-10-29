@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" afterDir="false" />
-    </list>
+    <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -66,14 +63,14 @@
           <entry key="edge" value="7241" />
           <entry key="env" value="146" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="27210" />
+          <entry key="js" value="27302" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="146" />
           <entry key="HTML" value="7230" />
-          <entry key="JavaScript" value="27210" />
+          <entry key="JavaScript" value="27302" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -90,28 +87,28 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+            <state relative-caret-position="-2940">
+              <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
               <folding>
                 <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
+                <element signature="n#!!block;n#loadEmail#0;n#EmailController#0" />
+                <element signature="n#!!block;n#readCsv#0;n#EmailController#0" />
                 <element signature="n#!!block;n#messages#0;n#EmailController#0" />
-                <element signature="n#!!block;n#sendMail#0;n#EmailController#0" />
                 <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+            <state relative-caret-position="160">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="29" selection-end-column="41" />
               <folding>
-                <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
                 <element signature="n#!!block;n#test#0;n#MainController#0" />
                 <element signature="n#!!block;n#index#0;n#MainController#0" />
                 <element signature="n#!!block;n#setUpQr#0;n#MainController#0" />
@@ -203,6 +200,7 @@
       <find>phone_numbers</find>
       <find>Your Sales</find>
       <find>/storage/uploads/</find>
+      <find>SELECT DISTINCT</find>
     </findStrings>
     <replaceStrings>
       <replace>loadEmail</replace>
@@ -250,10 +248,10 @@
         <option value="$PROJECT_DIR$/start/hooks.js" />
         <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/DashBoardController.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
       </list>
     </option>
   </component>
@@ -387,16 +385,15 @@
       <workItem from="1540554584490" duration="9661000" />
       <workItem from="1540611833930" duration="4728000" />
       <workItem from="1540673441420" duration="8996000" />
-      <workItem from="1540753577286" duration="5121000" />
+      <workItem from="1540753577286" duration="5427000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126812000" />
+    <option name="totallyTimeSpent" value="127118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -697,19 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="99" column="9" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
-            <element signature="n#!!block;n#messages#0;n#EmailController#0" />
-            <element signature="n#!!block;n#sendMail#0;n#EmailController#0" />
-            <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/1539709369539_number_list_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -736,10 +720,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+        <state relative-caret-position="160">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="29" selection-end-column="41" />
           <folding>
-            <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
             <element signature="n#!!block;n#test#0;n#MainController#0" />
             <element signature="n#!!block;n#index#0;n#MainController#0" />
             <element signature="n#!!block;n#setUpQr#0;n#MainController#0" />
@@ -749,6 +732,20 @@
             <element signature="n#!!block;n#loadNumber#0;n#MainController#0" />
             <element signature="n#!!block;n#blackList#0;n#MainController#0" />
             <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2940">
+          <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
+            <element signature="n#!!block;n#loadEmail#0;n#EmailController#0" />
+            <element signature="n#!!block;n#readCsv#0;n#EmailController#0" />
+            <element signature="n#!!block;n#messages#0;n#EmailController#0" />
+            <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
           </folding>
         </state>
       </provider>
