@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -66,14 +66,14 @@
           <entry key="edge" value="7241" />
           <entry key="env" value="146" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="27156" />
+          <entry key="js" value="27210" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="146" />
           <entry key="HTML" value="7230" />
-          <entry key="JavaScript" value="27156" />
+          <entry key="JavaScript" value="27210" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -85,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -108,13 +108,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+            <state relative-caret-position="422">
+              <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
               <folding>
+                <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
                 <element signature="n#!!block;n#test#0;n#MainController#0" />
                 <element signature="n#!!block;n#index#0;n#MainController#0" />
                 <element signature="n#!!block;n#setUpQr#0;n#MainController#0" />
-                <element signature="n#!!block;n#messages#0;n#MainController#0" />
                 <element signature="n#!!block;n#status#0;n#MainController#0" />
                 <element signature="n#!!block;n#readCsv#0;n#MainController#0" />
                 <element signature="n#!!block;n#sendMessage#0;n#MainController#0" />
@@ -251,8 +251,8 @@
         <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/DashBoardController.js" />
+        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
       </list>
     </option>
@@ -326,24 +326,6 @@
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
-              <item name="phone" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -405,18 +387,18 @@
       <workItem from="1540554584490" duration="9661000" />
       <workItem from="1540611833930" duration="4728000" />
       <workItem from="1540673441420" duration="8996000" />
-      <workItem from="1540753577286" duration="4483000" />
+      <workItem from="1540753577286" duration="5121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126174000" />
+    <option name="totallyTimeSpent" value="126812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -430,7 +412,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -728,13 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/1539709369539_number_list_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -752,15 +727,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+        <state relative-caret-position="422">
+          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
           <folding>
+            <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
             <element signature="n#!!block;n#test#0;n#MainController#0" />
             <element signature="n#!!block;n#index#0;n#MainController#0" />
             <element signature="n#!!block;n#setUpQr#0;n#MainController#0" />
-            <element signature="n#!!block;n#messages#0;n#MainController#0" />
             <element signature="n#!!block;n#status#0;n#MainController#0" />
             <element signature="n#!!block;n#readCsv#0;n#MainController#0" />
             <element signature="n#!!block;n#sendMessage#0;n#MainController#0" />

@@ -30,12 +30,7 @@ class MainController {
       'LIMIT 201)b USING (id) LIMIT 200;'
 
     const numbersList = await Database.raw(query)
-    let numbers = numbersList.toJSON()
-
-    const typelist = await Type.all()
-    let type = typelist.toJSON()
-
-    return view.render('deletecontact', { phoneNumbers: numbers, Types: type })
+    return view.render('deletecontact', { phoneNumbers: numbersList[0]})
   }
 
   async test({view}) {
@@ -57,13 +52,7 @@ class MainController {
       'LIMIT 201)b USING (id) LIMIT 200;'
 
     let numberList = await Database.raw(query)
-    // const numbersList = await NumberList.all()
-    let numbers = numberList.toJSON()
-
-    // const typelist = await Type.all()
-    // let type = typelist.toJSON()
-
-    return view.render('message', { phoneNumbers: numbers })
+    return view.render('message', { phoneNumbers: numberList[0] })
   }
 
   async status({session, view, request, response}) {
@@ -254,12 +243,7 @@ class MainController {
 
     const numbersList = await Database.raw(query)
 
-    let numbers = numbersList.toJSON()
-
-    // const typelist = await Type.all()
-    // let type = typelist.toJSON()
-
-    return view.render('upload', { phoneNumbers: numbers})
+    return view.render('upload', { phoneNumbers: numbersList[0]})
   }
 
   async blackList({session, view, request, response}){

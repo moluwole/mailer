@@ -36,13 +36,17 @@ class EmailController {
   }
 
   async loadEmail({view}){
-    const emailList = await EmailList.all()
-    let email = emailList.toJSON()
+
+    let query = 'SELECT DISTINCT * FROM email_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM email_lists) + ' +
+      '((SELECT MAX(id) FROM email_lists) - (SELECT MIN(id) FROM email_lists) + 1) * RAND()) AS id FROM email_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    const emailList = await Database.raw(query)
 
     const typelist = await Type.all()
     let type = typelist.toJSON()
 
-    return view.render('uploadmail', { Emails: email, Types: type })
+    return view.render('uploadmail', { Emails: emailList[0], Types: type })
   }
 
   async readCsv({session, view, request, response}) {
@@ -143,13 +147,16 @@ class EmailController {
 
 
   async messages({view}){
-    const emailList = await EmailList.all()
-    let emails = emailList.toJSON()
 
+    let query = 'SELECT DISTINCT * FROM email_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM email_lists) + ' +
+      '((SELECT MAX(id) FROM email_lists) - (SELECT MIN(id) FROM email_lists) + 1) * RAND()) AS id FROM email_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    const emailList = await Database.raw(query)
     const typelist = await Type.all()
     let type = typelist.toJSON()
 
-    return view.render('sendmail', { Emails: emails, Types: type })
+    return view.render('sendmail', { Emails: emailList[0], Types: type })
   }
 
   async sendMail({session, request, response}){
