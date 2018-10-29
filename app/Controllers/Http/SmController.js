@@ -84,9 +84,10 @@ class SmController {
 
     const numbersList = await Database.raw(query)
 
-    // const typelist = await Type.all()
-    // let type = typelist.toJSON()
-    return view.render('sendsms', { phoneNumbers: numbersList[0] })
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('sendsms', { phoneNumbers: numbersList[0], Types: type })
   }
 
   async sendMessage({view, request, response, session}){

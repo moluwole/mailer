@@ -30,11 +30,10 @@
                 {{ csrfField() }}
 
                 <div class="form-group row" style="margin-left: 20px; margin-right: 20px">
-                  <label>Choose Email Catergory</label>
+                  <label>Choose Email Category/State</label>
                   <select class="form-control select2 select2-hidden-accessible" name="email_type" ui-jp="select2"
                           ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
-                    <optgroup label="Email Categories">
-                      <option>All</option>
+                    <optgroup label="Categories/State">
                       @each(cat in Types)
                         <option>{{cat.types}}</option>
                       @endeach

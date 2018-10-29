@@ -153,6 +153,7 @@ class EmailController {
       'LIMIT 201)b USING (id) LIMIT 200;'
 
     const emailList = await Database.raw(query)
+
     const typelist = await Type.all()
     let type = typelist.toJSON()
 
