@@ -37,19 +37,28 @@
       <div class="col-md-6">
         <div class="box">
           <div class="box-header">
-            <h2>Message To Send</h2>
+            <h2>Media Campaign</h2>
             <small>
-              Enter Message to send
+              Choose File and enter a caption (optional)
             </small>
           </div>
           <div class="box-divider m-a-0"></div>
           <div class="box-body">
-            <form action="/sendmessage" method="POST">
+            <form action="/send-media" method="POST" enctype="multipart/form-data" id="media_select">
               {{ csrfField() }}
-              <textarea name="editordata" id="styled" class="form-control" rows="9" placeholder="Message Body"
-                        onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
 
-              <div class="form-group row" style="margin-left: 5px; margin-right: 5px; margin-top: 20px;">
+              <div class="form-control-file text-black" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                <input type="file" name="media" id="media_file">
+              </div>
+              <br />
+
+              <div class="form-group row" style="margin-left: 10px; margin-right: 10px">
+                <label>Caption (Optional)</label>
+                <textarea name="caption" id="styled" class="form-control" rows="1" placeholder="Message Body"
+                          onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+              </div>
+
+              <div class="form-group row" style="margin-left: 10px; margin-right: 10px; margin-top: 20px;">
                 <label>Choose Category to send to</label>
                 <select class="form-control select2 select2-hidden-accessible" name="state" ui-jp="select2"
                         ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
@@ -78,38 +87,11 @@
                 </div>
               </div>
 
-              <br /> <br />
-              <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
-            </form>
-          </div>
-        </div>
-
-        <div class="">
-          <div class="row">
-            <div style="margin: 0.5rem;">
-              <div class="box">
-                <div class="box-header">
-                  <h2>Delete Phone Number</h2>
-                </div>
-                <div class="box-divider m-a-0"></div>
-                <div class="box-body">
-
-                  <form action="/blacklist" method="POST">
-                    {{ csrfField() }}
-                    <div class="form-group row">
-                      <label class="col-sm-3 form-control-label">Phone Number</label>
-                      <div class="col-sm-9">
-                        <input name="black_number" class="form-control" data-parsley-type="number" data-parsley-id="60" placeholder="234xxxxxxxxxx" type="number" required>
-                      </div>
-                    </div>
-                    <div class="p-a text-right">
-                      <button class="btn danger" type="submit">Delete &nbsp;<i class="material-icons">delete_forever</i> </button>
-                    </div>
-                  </form>
-
-                </div>
+              <br />
+              <div class="modal-footer">
+                <button class="btn btn-outline-info" name="submit" type="submit">Send Message <i class="material-icons">send</i></button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -119,27 +101,27 @@
           <div class="box-body">
 
             <div class="table-responsive">
-                <table id="tables_phone" class="display table table-striped b-t">
+              <table id="tables_phone" class="display table table-striped b-t">
 
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Numbers</th>
-                    <th>State</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @each(num in phoneNumbers)
-                      <tr>
-                        <td>{{ ($loop.index + 1) }}</td>
-                        <td>{{ num.phone_number }}</td>
-                        <td>{{ num.state }}</td>
-                      </tr>
-                    @endeach
-                  </tbody>
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Numbers</th>
+                  <th>State</th>
+                </tr>
+                </thead>
+                <tbody>
+                @each(num in phoneNumbers)
+                <tr>
+                  <td>{{ ($loop.index + 1) }}</td>
+                  <td>{{ num.phone_number }}</td>
+                  <td>{{ num.state }}</td>
+                </tr>
+                @endeach
+                </tbody>
 
-                </table>
-              </div>
+              </table>
+            </div>
 
           </div>
         </div>

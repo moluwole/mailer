@@ -30,9 +30,12 @@ Route.get('/del-contact', 'MainController.loadContacts')
 //   };
 // })
 
-// Route.get('/cat', ({ view }) => {
-//   return view.render('category')
-// })
+Route.get('/med', ({ view }) => {
+  return view.render('media')
+})
+
+Route.get('/media', 'MainController.showMedia')
+Route.post('/send-media', 'MainController.sendMedia')
 
 Route.get('/cat', 'UtilController.openCat')
 Route.post('/save-cat', 'UtilController.addCat')
@@ -58,3 +61,9 @@ Route.group(() => {
   Route.get('/message', 'SmController.message')
   Route.post('/send-message', 'SmController.sendMessage')
 }).prefix('sms')
+
+Route.group(() => {
+  Route.get('/target', 'TargetController.getWards')
+  Route.post('/target/add', 'TargetController.saveWard')
+  Route.post('/target/whatsapp', 'TargetController.sendWardWhatsapp')
+})

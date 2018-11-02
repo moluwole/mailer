@@ -14,8 +14,10 @@ const CronJob     = require('cron').CronJob
 const Message     = use('App/Models/Message')
 const Numbers     = use('App/Models/Number')
 const Moment      = require('moment')
+const SmController = require("./SmController");
 const Count       = use('App/Models/Count')
 const NumberList  = use("App/Models/NumberList")
+const Ward        = use('App/Models/Ward')
 
 
 const url         = "https://eu21.chat-api.com/instance13677/"
@@ -186,10 +188,14 @@ class MainController {
   }
 
   async sendMessage({session, view, request, response}) {
-    let data = request.collect(['editordata', 'state'])
+    let data = request.collect(['editordata', 'state', 'limit', 'random'])
 
     let message_ = data[0]['editordata']
     let state = data[0]['state']
+    const messageLimit = data[0]['limit']
+    const random = data[0]['random']
+
+    let limit = 0
 
     if (state === null || state === ""){
       session.flash({
@@ -227,7 +233,28 @@ class MainController {
 
     numberArray = numberArray.toJSON()
 
-    for (let i = 0; i < numberArray.length; i++) {
+    /**
+     * Check for Random here in order to make it random
+     */
+    if (random !== null){
+      numberArray = SmController.randomize(numberArray)
+    }
+
+    /**
+     * Check SMS Limit and set
+     */
+    if (messageLimit === null || messageLimit === ""){
+      limit = numberArray.length
+    }
+    else{
+      if (parseInt(messageLimit) > numberArray.length){
+        limit = numberArray.length
+      } else {
+        limit = parseInt(messageLimit)
+      }
+    }
+
+    for (let i = 0; i < limit; i++) {
       let number = new Numbers()
 
       number.message_id = messageID
@@ -278,36 +305,6 @@ class MainController {
     })
     return response.redirect('back')
   }
-
-  // static cronCsv(state){
-  //   let stopCron = false
-  //   const baseDir = `${Helpers.appRoot('/storage/uploads/phone/')}`
-  //
-  //   const job = new CronJob('30 * * * * *', function () {
-  //     let files = fs.readdirSync(baseDir)
-  //     if (files.length <= 0){
-  //       stopCron = true
-  //     }
-  //     else{
-  //       for (let singleFile in files){
-  //         let csvFile = `${baseDir}${files[singleFile]}`
-  //         console.log(csvFile)
-  //
-  //       }
-  //     }
-  //   })
-  //
-  //   if (stopCron) {
-  //     if (job.isRunning()){
-  //       job.destroy()
-  //       console.log("Cron Job stopped. Reason: " + reason)
-  //     }
-  //   }
-  //   else {
-  //     job.start()
-  //     console.log("Cron Job Started.")
-  //   }
-  // }
 
   static cronJob() {
 
@@ -410,6 +407,248 @@ class MainController {
           //     console.log("Unable to send message to " + number)
           //   }
           // })
+
+
+          //Delete the Number from the Database to avoid Repetition
+          let currentUser = await Numbers.find(numberList[i]['id'])
+          await currentUser.delete()
+
+          //Update Count DB
+          let currCount = await Count.first()
+
+          currCount.curDate = curDate
+          currCount.count = parseInt(currCount.count) + 1
+
+          await currCount.save()
+        }
+        catch (e) {
+          console.log(e)
+          stopCron = true
+          break
+        }
+      }
+    })
+
+    if (stopCron) {
+      if (job.isRunning()){
+        job.destroy()
+        console.log("Cron Job stopped. Reason: " + reason)
+      }
+    }
+    else {
+      job.start()
+      console.log("Cron Job Started.")
+    }
+  }
+
+
+
+  async showMedia({request, response, view}){
+    let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
+      '((SELECT MAX(id) FROM number_lists) - (SELECT MIN(id) FROM number_lists) + 1) * RAND()) AS id FROM number_lists ' +
+      'LIMIT 201)b USING (id) LIMIT 200;'
+
+    let numberList = await Database.raw(query)
+
+    const typelist = await Type.all()
+    let type = typelist.toJSON()
+
+    return view.render('media', { phoneNumbers: numberList[0], Types: type})
+  }
+
+  async sendMedia({request, response, view, session}){
+    let data = request.collect(['caption', 'state', 'limit', 'random'])
+
+    let caption         = data[0]['caption']
+    let state           = data[0]['state']
+    const messageLimit  = data[0]['limit']
+    const random        = data[0]['random']
+
+    let limit = 0
+
+    if (state === null || state === ""){
+      session.flash({
+        error: 'Select a State to send messages to '
+      })
+      return response.redirect('back')
+    }
+
+
+    let file = request.file('media', {
+      maxSize: '5mb',
+      allowedExtension: ['png', 'jpg']
+    })
+
+    if (file === null){
+      session.flash({
+        error: 'Upload an image to send'
+      })
+      return response.redirect('back')
+    }
+
+    let filename = `${new Date().getTime()}.${file.subtype}`
+
+    await file.move(Helpers.appRoot('/storage/uploads/media/'), {
+      name: filename
+    })
+
+    let mediaFile = Helpers.appRoot('/storage/uploads/media/') + filename
+
+    let bitmap = fs.readFileSync(mediaFile);
+    // convert binary data to base64 encoded string
+    let base64 = `data:image/${file.subtype};base64,` + Buffer(bitmap).toString('base64');
+
+
+    //Save Message into the Database
+    let messageDB     = new Message()
+    messageDB.message = caption + "||" + base64
+
+    await messageDB.save()
+
+    const messageID = messageDB.id
+
+    //Get Number Array from Session and Save to Database
+    let numberArray = null
+
+    if (state === "All"){
+      numberArray = await NumberList.all()
+    }
+    else{
+      numberArray = await NumberList.query().where({state: state}).fetch()
+    }
+
+    numberArray = numberArray.toJSON()
+
+    /**
+     * Check for Random here in order to make it random
+     */
+    if (random !== null){
+      numberArray = SmController.randomize(numberArray)
+    }
+
+    /**
+     * Check SMS Limit and set
+     */
+    if (messageLimit === null || messageLimit === ""){
+      limit = numberArray.length
+    }
+    else{
+      if (parseInt(messageLimit) > numberArray.length){
+        limit = numberArray.length
+      } else {
+        limit = parseInt(messageLimit)
+      }
+    }
+
+    for (let i = 0; i < limit; i++) {
+      let number = new Numbers()
+
+      number.message_id = messageID
+      number.number = numberArray[i]['phone_number']
+
+      await number.save()
+    }
+
+    session.flash({notification: 'Messages queued for sending. 120 per minute, 6000 per day'})
+
+    MainController.mediaCronJob()
+
+    return response.redirect('back')
+  }
+
+  static mediaCronJob(){
+    let stopCron = false
+    let reason = ""
+
+    let job = new CronJob('0 */1 * * * *', async function () {
+
+      let sendMessageUrl = url + "sendFile?token=" + token
+
+      let curDate = new Moment().format("YYYY-MM-DD")
+
+      //Get Date and count
+      let currentCount = await Count.first()
+
+      if (currentCount === null) {
+        currentCount = new Count()
+
+        currentCount.curDate = curDate
+        currentCount.count = 0
+
+        await currentCount.save()
+      }
+
+      //Check for threshold
+      if ((curDate === currentCount['curDate']) && (parseInt(currentCount['count'] >= 6000))) {
+        return
+      }
+
+      let numberList = await Numbers.all()
+
+      numberList = numberList.toJSON()
+
+      if (numberList === null || numberList === undefined || numberList.length <= 0){
+        stopCron = true
+        reason = "Messages sent"
+        return
+      }
+
+      for (let i = 0; i < 120; i++) {
+        try {
+
+          let number = numberList[i]['number']
+
+          if (number === null || number === undefined) {
+            reason = "All messages sent"
+            stopCron = true
+            break
+          }
+
+          //Get the message to send
+          let message_res = await Message.find(numberList[i]['message_id'])
+          let messageJSON = message_res.toJSON()
+
+          //data:image/png;base64,
+          let messageArray = messageJSON['message'].split('||', 2)
+
+          let caption = messageArray[0].toString()
+          let messageBody = messageArray[1].toString()
+
+          let subtype = messageArray[1].toString().split('/', 2)[1].split(';')[0].toString()
+          let fileName = `${new Date().getTime()}.${subtype}`
+
+          //Parameters to send to the WHATSAPP API message endpoint
+          let data = {
+            phone: number,
+            body: messageBody.toString(),
+            filename: fileName,
+            caption: caption
+          }
+
+          //Send Message to the Endpoint
+
+          try {
+            let header = {
+              'Content-Type': 'application/json'
+            }
+
+            let messageSender = Request("POST", sendMessageUrl, {
+              headers: header,
+              body: JSON.stringify(data),
+            })
+
+            //Check if message is sent successfully
+            let responseBody = JSON.parse(messageSender.getBody())
+            if (responseBody["sent"] === true) {
+              console.log("Message Sent to " + number)
+            }else {
+              console.log(responseBody)
+              console.log("Unable to send message to " + number)
+            }
+          }
+          catch (e) {
+            console.log("Unable to send message: " + e)
+          }
 
 
           //Delete the Number from the Database to avoid Repetition

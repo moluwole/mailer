@@ -58,6 +58,44 @@
 
   <!-- ############ LAYOUT START-->
 
+  <div id="m-b-b" class="modal black-overlay" data-backdrop="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Ward</h5>
+        </div>
+        <div class="modal-body text-center p-lg">
+          <form action="/target/add" method="POST">
+          {{ csrfField() }}
+          <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Ward Name</label>
+            <div class="col-sm-9">
+              <input name="wardName" class="form-control"  placeholder="Ward Name" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 form-control-label">Ward Code</label>
+            <div class="col-sm-9">
+              <input name="ward" class="form-control"  placeholder="Ward Code" required>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Dismiss</button>
+            <button class="btn btn-outline-info" type="submit">Add Ward &nbsp;</button>
+          </div>
+        </form>
+
+        </div>
+        <!--<div class="modal-footer">-->
+          <!--<button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button>-->
+        <!--</div>-->
+      </div><!-- /.modal-content -->
+    </div>
+  </div>
+
+
   <!-- aside -->
   <div id="aside" class="app-aside modal fade folded md nav-expand">
     <div class="left navside indigo-900 dk" layout="column">
@@ -129,6 +167,17 @@
               </a>
             </li>
 
+            <li>
+              <a href="#" data-toggle="modal" data-target="#m-b-b">
+                <span class="nav-icon">
+                    <i class="material-icons">add
+                      <span ui-include="'../assets/images/i_1.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Add Ward </span>
+              </a>
+            </li>
+
             <br/>
 
             <!--WhatsApp-->
@@ -137,35 +186,99 @@
             </li>
 
             <li>
-              <a href="/message">
+              <a>
+                  <span class="nav-caret">
+                    <i class="fa fa-caret-down"></i>
+                  </span>
                 <span class="nav-icon">
                     <i class="material-icons">message
-                      <span ui-include="'../assets/images/i_1.svg'"></span>
+                      <span ui-include="'../assets/images/i_7.svg'"></span>
                     </i>
                   </span>
-                <span class="nav-text">Send Message</span>
+                <span class="nav-text">Message</span>
               </a>
+              <ul class="nav-sub">
+                <li>
+                  <a href="/message" >
+                    <span class="nav-text">Send Text</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/media">
+                    <span class="nav-text">Send Media</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
+            <!--<li>-->
+              <!--<a href="/message">-->
+                <!--<span class="nav-icon">-->
+                    <!--<i class="material-icons">message-->
+                      <!--<span ui-include="'../assets/images/i_1.svg'"></span>-->
+                    <!--</i>-->
+                  <!--</span>-->
+                <!--<span class="nav-text">Send Message</span>-->
+              <!--</a>-->
+            <!--</li>-->
+
             <li>
-              <a href="/status">
+              <a>
+                  <span class="nav-caret">
+                    <i class="fa fa-caret-down"></i>
+                  </span>
                 <span class="nav-icon">
-                    <i class="material-icons">check_circle_outline
-                      <span ui-include="'../assets/images/i_2.svg'"></span>
+                    <i class="material-icons">settings
+                      <span ui-include="'../assets/images/i_7.svg'"></span>
                     </i>
                   </span>
-                <span class="nav-text">Check Status</span>
+                <span class="nav-text">Settings</span>
               </a>
+              <ul class="nav-sub">
+                <li>
+                  <a href="/status" >
+                    <span class="nav-text">Check Status</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/status" >
+                    <span class="nav-text">Setup Account</span>
+                  </a>
+                </li>
+              </ul>
             </li>
 
+
+            <!--<li>-->
+              <!--<a href="/status">-->
+                <!--<span class="nav-icon">-->
+                    <!--<i class="material-icons">check_circle_outline-->
+                      <!--<span ui-include="'../assets/images/i_2.svg'"></span>-->
+                    <!--</i>-->
+                  <!--</span>-->
+                <!--<span class="nav-text">Check Status</span>-->
+              <!--</a>-->
+            <!--</li>-->
+
+            <!--<li>-->
+              <!--<a href="/status" >-->
+                  <!--<span class="nav-icon">-->
+                    <!--<i class="material-icons">settings-->
+                      <!--<span ui-include="'../assets/images/i_3.svg'"></span>-->
+                    <!--</i>-->
+                  <!--</span>-->
+                <!--<span class="nav-text">Setup Account</span>-->
+              <!--</a>-->
+            <!--</li>-->
+
             <li>
-              <a href="/status" >
+              <a href="/target" >
                   <span class="nav-icon">
-                    <i class="material-icons">settings
+                    <i class="material-icons">send
                       <span ui-include="'../assets/images/i_3.svg'"></span>
                     </i>
                   </span>
-                <span class="nav-text">Setup Account</span>
+                <span class="nav-text">Target Campaign</span>
               </a>
             </li>
 

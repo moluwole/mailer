@@ -1,0 +1,113 @@
+@layout('master')
+
+
+@section('content')
+
+<script>
+  function setbg(color) {
+    document.getElementById("styled").style.background=color
+  }
+  $(document).ready(function() {
+    $('#tables_phone').DataTable();
+
+    $('#select_file').change(function () {
+      $('#phone_select').submit()
+    });
+  });
+</script>
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <!--{{ phoneNumbers }}-->
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h2>Send Targeted Whatsapp Campaign</h2>
+            <small>
+              Enter Message to send
+            </small>
+          </div>
+          <div class="box-divider m-a-0"></div>
+          <div class="box-body">
+            <form action="/target/whatsapp" method="POST">
+              {{ csrfField() }}
+              <textarea name="message" id="styled" class="form-control" rows="9" placeholder="Message Body"
+                        onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+
+              <div class="form-group row" style="margin-left: 5px; margin-right: 5px; margin-top: 20px;">
+                <label>Choose Ward to send to</label>
+                <select class="form-control select2 select2-hidden-accessible" name="ward" ui-jp="select2"
+                        ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
+                  <optgroup label="Wards">
+                    <option>All</option>
+                    @each(cat in Ward)
+                      <option>{{cat.name}}</option>
+                    @endeach
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="form-group row">
+
+              <div class="col-md-6">
+                <label class="form-control-label">Total Recipients</label>
+                <input class="form-control" type="number" name="limit" placeholder="Recipient Limit">
+              </div>
+
+                <div class="col-md-6">
+                  <br /> <br />
+                  <label>
+                    <input type="checkbox" name="random">
+                    Select to choose numbers randomly
+                  </label>
+                </div>
+              </div>
+
+              <br /> <br />
+              <div>
+              <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="box">
+          <div class="box-body">
+
+            <div class="table-responsive">
+              <table id="tables_phone" class="display table table-striped b-t">
+
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Ward Name</th>
+                  <th>Ward Code</th>
+                </tr>
+                </thead>
+                <tbody>
+                @each(ward in Ward)
+                <tr>
+                  <td>{{ ($loop.index + 1) }}</td>
+                  <td>{{ ward.name }}</td>
+                  <td>{{ ward.ward }}</td>
+                </tr>
+                @endeach
+                </tbody>
+
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- / -->
+@endsection
