@@ -63,7 +63,7 @@ class EmailController {
     }
 
     var csvfile = request.file('emails', {
-      maxSize: '5mb',
+      maxSize: '100mb',
       allowedExtension: ['csv']
     })
 

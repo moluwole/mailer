@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/MainController.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,14 +27,14 @@
           <entry key="project.open.time.19" value="3" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="2" />
-          <entry key="project.open.time.21" value="2" />
+          <entry key="project.open.time.21" value="3" />
           <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.52" value="1" />
-          <entry key="project.opened" value="20" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -47,7 +47,7 @@
           <entry key="example" value="1" />
           <entry key="gitignore" value="2" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="111" />
+          <entry key="js" value="116" />
           <entry key="map" value="1" />
           <entry key="md" value="1" />
           <entry key="sess" value="1" />
@@ -60,7 +60,7 @@
           <entry key="CSS" value="14" />
           <entry key="HTML" value="88" />
           <entry key="Image" value="1" />
-          <entry key="JavaScript" value="111" />
+          <entry key="JavaScript" value="116" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="SVG" value="1" />
@@ -71,14 +71,14 @@
           <entry key="edge" value="8573" />
           <entry key="env" value="155" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="31134" />
+          <entry key="js" value="31147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="155" />
           <entry key="HTML" value="8562" />
-          <entry key="JavaScript" value="31134" />
+          <entry key="JavaScript" value="31147" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -86,11 +86,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2449">
-              <caret line="558" column="23" selection-start-line="558" selection-start-column="23" selection-end-line="558" selection-end-column="23" />
+            <state relative-caret-position="160">
+              <caret line="476" column="27" selection-start-line="476" selection-start-column="15" selection-end-line="476" selection-end-column="27" />
               <folding>
                 <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
                 <element signature="n#!!block;n#test#0;n#MainController#0" />
@@ -102,44 +102,8 @@
                 <element signature="n#!!block;n#blackList#0;n#MainController#0" />
                 <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
                 <element signature="n#!!block;n#showMedia#0;n#MainController#0" />
-                <element signature="n#!!block;n#sendMedia#0;n#MainController#0" />
                 <element signature="n#!!block;n#mediaCronJob#0;n#MainController#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/master.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3933">
-              <caret line="206" column="33" selection-start-line="206" selection-start-column="33" selection-end-line="206" selection-end-column="33" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env.example">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/uploadmail.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/target.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1357">
-              <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -159,11 +123,52 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            <state relative-caret-position="207">
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4803">
+              <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/auth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1790" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-755">
+              <caret line="108" column="6" lean-forward="true" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="64" column="30" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
+                <element signature="n#!!block;n#loadEmail#0;n#EmailController#0" />
+                <element signature="n#!!block;n#messages#0;n#EmailController#0" />
+                <element signature="n#!!block;n#sendMail#0;n#EmailController#0" />
+                <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,7 +176,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/commander/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="10879">
               <caret line="473" column="20" selection-start-line="473" selection-start-column="20" selection-end-line="473" selection-end-column="20" />
             </state>
           </provider>
@@ -180,7 +185,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
+            <state relative-caret-position="1794">
               <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -192,7 +197,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-866">
+            <state relative-caret-position="805">
               <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
             </state>
           </provider>
@@ -263,7 +268,6 @@
         <option value="$PROJECT_DIR$/app/Controllers/Http/DashBoardController.js" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/SmController.js" />
         <option value="$PROJECT_DIR$/resources/views/sendmail.edge" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
         <option value="$PROJECT_DIR$/resources/views/upload.edge" />
         <option value="$PROJECT_DIR$/resources/views/uploadmail.edge" />
         <option value="$PROJECT_DIR$/resources/views/sendsms.edge" />
@@ -274,8 +278,10 @@
         <option value="$PROJECT_DIR$/start/routes.js" />
         <option value="$PROJECT_DIR$/resources/views/master.edge" />
         <option value="$PROJECT_DIR$/resources/views/media.edge" />
-        <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/config/bodyParser.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/EmailController.js" />
+        <option value="$PROJECT_DIR$/app/Controllers/Http/MainController.js" />
       </list>
     </option>
   </component>
@@ -306,6 +312,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -340,6 +347,11 @@
             <path>
               <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -357,7 +369,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -420,16 +431,18 @@
       <workItem from="1540899553792" duration="151000" />
       <workItem from="1541157353247" duration="13228000" />
       <workItem from="1541280215045" duration="938000" />
+      <workItem from="1541354773408" duration="515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147636000" />
+    <option name="totallyTimeSpent" value="148151000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2015504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2015504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -443,7 +456,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2936118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -456,7 +469,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/SmsKey.js" />
     <entry file="file://$PROJECT_DIR$/database/migrations/1539762270900_email_message_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -581,16 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.editorconfig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -633,20 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="20" column="49" lean-forward="true" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1192">
-          <caret line="148" column="24" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
-            <element signature="n#!!block;n#loadEmail#0;n#EmailController#0" />
-            <element signature="n#!!block;n#messages#0;n#EmailController#0" />
-            <element signature="n#!!block;n#sendMail#0;n#EmailController#0" />
-            <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,10 +745,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/commander/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10879">
+          <caret line="473" column="20" selection-start-line="473" selection-start-column="20" selection-end-line="473" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1794">
+          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4803">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1790" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bodyParser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-755">
+          <caret line="108" column="6" lean-forward="true" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/EmailController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!block;n#blackList#0;n#EmailController#0" />
+            <element signature="n#!!block;n#loadEmail#0;n#EmailController#0" />
+            <element signature="n#!!block;n#messages#0;n#EmailController#0" />
+            <element signature="n#!!block;n#sendMail#0;n#EmailController#0" />
+            <element signature="n#!!block;n#messageBDY#0;n#EmailController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2449">
-          <caret line="558" column="23" selection-start-line="558" selection-start-column="23" selection-end-line="558" selection-end-column="23" />
+        <state relative-caret-position="160">
+          <caret line="476" column="27" selection-start-line="476" selection-start-column="15" selection-end-line="476" selection-end-column="27" />
           <folding>
             <element signature="n#!!block;n#loadContacts#0;n#MainController#0" />
             <element signature="n#!!block;n#test#0;n#MainController#0" />
@@ -772,40 +824,8 @@
             <element signature="n#!!block;n#blackList#0;n#MainController#0" />
             <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
             <element signature="n#!!block;n#showMedia#0;n#MainController#0" />
-            <element signature="n#!!block;n#sendMedia#0;n#MainController#0" />
             <element signature="n#!!block;n#mediaCronJob#0;n#MainController#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/message.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/upload.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-866">
-          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/commander/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="473" column="20" selection-start-line="473" selection-start-column="20" selection-end-line="473" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
         </state>
       </provider>
     </entry>
