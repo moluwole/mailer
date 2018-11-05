@@ -41,8 +41,8 @@
                         ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
                   <optgroup label="Wards">
                     <option>All</option>
-                    @each(cat in Ward)
-                      <option>{{cat.lga}}</option>
+                    @each(lg in lga)
+                      <option>{{lg}}</option>
                     @endeach
                   </optgroup>
                 </select>
@@ -84,6 +84,7 @@
                 <thead>
                 <tr>
                   <th>#</th>
+                  <th>L.G.A</th>
                   <th>Ward Name</th>
                   <th>Ward Code</th>
                 </tr>
@@ -92,6 +93,7 @@
                 @each(ward in Ward)
                 <tr>
                   <td>{{ ($loop.index + 1) }}</td>
+                  <td>{{ ward.lga }}</td>
                   <td>{{ ward.name }}</td>
                   <td>{{ ward.ward }}</td>
                 </tr>

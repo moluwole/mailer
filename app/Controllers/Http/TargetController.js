@@ -16,8 +16,18 @@ const token       = "i49abxx9i0z3nfiv"
 class TargetController {
 
   async getWards({session, view, request}){
-    const ward = await Ward.all()
-    return view.render('target', {Ward: ward.toJSON()})
+    let ward = await Ward.all()
+    ward = ward.toJSON()
+
+    let lga = []
+
+    for (let i =0; i < ward.length; i++){
+      if (lga.indexOf(ward[i]['lga']) === -1){
+        lga.push(ward[i]['lga'])
+      }
+    }
+
+    return view.render('target', {Ward: ward, lga: lga})
   }
 
   async saveWard({session, view, request, response}){
@@ -79,7 +89,7 @@ class TargetController {
 
     // let {message, ward} = request.all()
     const message = data[0]['message']
-    const ward = data[0]['ward']
+    const lga = data[0]['ward']
     const messageLimit = data[0]['limit']
     const random = data[0]['random']
 
@@ -105,49 +115,88 @@ class TargetController {
 
     if (ward === "All"){
       numberArray = await NumberList.all()
+
+      numberArray = numberArray.toJSON()
+
+      /**
+       * Check for Random here in order to make it random
+       */
+      if (random !== null){
+        numberArray = SmController.randomize(numberArray)
+      }
+
+      /**
+       * Check SMS Limit and set
+       */
+      if (messageLimit === null || messageLimit === ""){
+        limit = numberArray.length
+      }
+      else{
+        if (parseInt(messageLimit) > numberArray.length){
+          limit = numberArray.length
+        } else {
+          limit = parseInt(messageLimit)
+        }
+      }
+
+      for (let i = 0; i < limit; i++) {
+        let number = new Numbers()
+
+        number.message_id = messageID
+        number.number = numberArray[i]['phone_number']
+
+        await number.save()
+      }
+
+      MainController.cronJob()
     }
+
     else{
-      let wardDetails = await Ward.findBy({name: ward})
+      let wardDetails = await Ward.findBy({lga: lga})
       wardDetails = wardDetails.toJSON()
 
-      numberArray = await NumberList.query().where({ward: wardDetails['ward']}).fetch()
-    }
+      for (let j = 0; j < wardDetails.length; j++) {
 
-    numberArray = numberArray.toJSON()
+        numberArray = await NumberList.query().where({ward: wardDetails[j]['ward']}).fetch()
 
-    /**
-     * Check for Random here in order to make it random
-     */
-    if (random !== null){
-      numberArray = SmController.randomize(numberArray)
-    }
+        numberArray = numberArray.toJSON()
 
-    /**
-     * Check SMS Limit and set
-     */
-    if (messageLimit === null || messageLimit === ""){
-      limit = numberArray.length
-    }
-    else{
-      if (parseInt(messageLimit) > numberArray.length){
-        limit = numberArray.length
-      } else {
-        limit = parseInt(messageLimit)
+        /**
+         * Check for Random here in order to make it random
+         */
+        if (random !== null){
+          numberArray = SmController.randomize(numberArray)
+        }
+
+        /**
+         * Check SMS Limit and set
+         */
+        if (messageLimit === null || messageLimit === ""){
+          limit = numberArray.length
+        }
+        else{
+          if (parseInt(messageLimit) > numberArray.length){
+            limit = numberArray.length
+          } else {
+            limit = parseInt(messageLimit)
+          }
+        }
+
+        for (let i = 0; i < limit; i++) {
+          let number = new Numbers()
+
+          number.message_id = messageID
+          number.number = numberArray[i]['phone_number']
+
+          await number.save()
+        }
+
+        MainController.cronJob()
+
       }
     }
 
-    for (let i = 0; i < limit; i++) {
-      let number = new Numbers()
-
-      number.message_id = messageID
-      number.number = numberArray[i]['phone_number']
-
-      await number.save()
-    }
-
     session.flash({notification: 'Messages queued for sending. 120 per minute, 6000 per day'})
-
-    MainController.cronJob()
 
     return response.redirect('back')
   }
