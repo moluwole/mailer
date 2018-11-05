@@ -67,6 +67,62 @@
         <div class="modal-body text-center p-lg">
           <form action="/target/add" method="POST">
           {{ csrfField() }}
+
+            <div class="form-group row">
+              <div>
+                <label class="col-sm-3 form-control-label">Choose State Ward Belongs to</label>
+                <div class="col-sm-9">
+                  <select class="form-control select2 select2-hidden-accessible" name="state" ui-jp="select2" ui-options="{theme: 'bootstrap'}" tabindex="-1" aria-hidden="true">
+                  <optgroup label="States">
+                    <option>Abia</option>
+                    <option>Adamawa</option>
+                    <option>Akwa Ibom</option>
+                    <option>Anambra</option>
+                    <option>Bauchi</option>
+                    <option>Bayelsa</option>
+                    <option>Benue</option>
+                    <option>Borno</option>
+                    <option>Cross River</option>
+                    <option>Delta</option>
+                    <option>Ebonyi</option>
+                    <option>Enugu</option>
+                    <option>Edo</option>
+                    <option>Ekiti</option>
+                    <option>Gombe</option>
+                    <option>Imo</option>
+                    <option>Jigawa</option>
+                    <option>Kaduna</option>
+                    <option>Kano</option>
+                    <option>Katsina</option>
+                    <option>Kebbi</option>
+                    <option>Kogi</option>
+                    <option>Kwara</option>
+                    <option>Lagos</option>
+                    <option>Nasarawa</option>
+                    <option>Niger</option>
+                    <option>Ogun</option>
+                    <option>Ondo</option>
+                    <option>Osun</option>
+                    <option>Oyo</option>
+                    <option>Plateau</option>
+                    <option>Rivers</option>
+                    <option>Sokoto</option>
+                    <option>Taraba</option>
+                    <option>Yobe</option>
+                    <option>Zamfara</option>
+                  </optgroup>
+                </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Ward Local Government</label>
+              <div class="col-sm-9">
+                <input name="lga" class="form-control"  placeholder="Local Government Area" required>
+              </div>
+            </div>
+
           <div class="form-group row">
             <label class="col-sm-3 form-control-label">Ward Name</label>
             <div class="col-sm-9">

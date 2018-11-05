@@ -6,6 +6,8 @@ class WardSchema extends Schema {
   up () {
     this.create('wards', (table) => {
       table.increments()
+      table.string('state')
+      table.string('lga')
       table.string('name')
       table.string('ward')
       table.timestamps()

@@ -4,11 +4,12 @@ const Type = use('App/Models/Type')
 
 class UtilController {
 
-  async addCat({session, view, request, response}){
+  async addCat({session, view, request, response}) {
    let data = request.only(['cat'])
 
     let category = data['cat']
-    if (category === null || category === ""){
+
+    if (category === null || category === "") {
       session.flash({
         error: 'Provide a Category to save'
       })
@@ -19,6 +20,7 @@ class UtilController {
     type.types = category
 
     await type.save()
+
     session.flash({
       notification: 'Category Saved Successfully'
     })
@@ -26,10 +28,11 @@ class UtilController {
     return response.redirect('back')
   }
 
-  async openCat({view}){
+  async openCat({view}) {
     let type = await Type.all()
     return view.render('category', {Types: type.toJSON()})
   }
+
 }
 
 module.exports = UtilController

@@ -22,10 +22,12 @@ class TargetController {
 
   async saveWard({session, view, request, response}){
 
-    let data = request.collect(['wardName', 'ward'])
+    let data = request.collect(['wardName', 'ward', 'lga', 'state'])
 
     let wardName = data[0]['wardName']
     let ward = data[0]['ward']
+    let lga = data[0]['lga']
+    let state = data[0]['state']
 
     if (wardName === null || wardName === "") {
       session.flash({
@@ -41,20 +43,26 @@ class TargetController {
       return response.redirect('back')
     }
 
-    let wardDetails = await Database.raw("SELECT * FROM wards WHERE ward = '" + ward + "' OR name = '" + wardName + "'")
-    wardDetails = wardDetails[0]
-
-    if (wardDetails.length > 0){
+    if (lga === null || lga === ""){
       session.flash({
-        error: 'Ward Code and name found in Storage. Enter a unique ward code and name to proceed'
+        error: 'Provide a valid local government to proceed'
+      })
+      return response.redirect('back')
+    }
+
+    if (state === null || state === ""){
+      session.flash({
+        error: 'Select a valid state to proceed'
       })
       return response.redirect('back')
     }
 
     let newWard = new Ward()
 
-    newWard.name = wardName
-    newWard.ward = ward
+    newWard.name  = wardName
+    newWard.ward  = ward
+    newWard.lga   = lga
+    newWard.state = state
 
     await newWard.save()
 
