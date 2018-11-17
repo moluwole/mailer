@@ -132,7 +132,7 @@ class SendController {
     if (sms !== null){
 
       if (senderInfo === null){
-        senderInfo = "C_MANAGER"
+        senderInfo = "BrandEnvoy"
       }
 
       let key = SmController.getKey()
@@ -182,6 +182,10 @@ class SendController {
       })
       return response.redirect('back')
     }
+	session.flash({
+		notification: "Message Sent"
+	})
+	return response.redirect("back")
   }
 
 }
