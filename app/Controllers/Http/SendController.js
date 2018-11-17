@@ -60,8 +60,6 @@ class SendController {
         // convert binary data to base64 encoded string
         let base64 = `data:image/${file.subtype};base64,` + Buffer(bitmap).toString('base64');
 
-        console.log(base64)
-
         let sendUrl = url + "sendFile?token=" + token
 
         for (let i = 0; i < numberList.length; i++){

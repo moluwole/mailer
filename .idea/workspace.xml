@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/SendController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/Http/SendController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.edge" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,7 +46,7 @@
         <counts>
           <entry key="ace" value="1" />
           <entry key="css" value="14" />
-          <entry key="edge" value="108" />
+          <entry key="edge" value="109" />
           <entry key="editorconfig" value="2" />
           <entry key="env" value="10" />
           <entry key="example" value="1" />
@@ -61,7 +63,7 @@
         <counts>
           <entry key=".env file" value="10" />
           <entry key="CSS" value="14" />
-          <entry key="HTML" value="107" />
+          <entry key="HTML" value="108" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="130" />
           <entry key="Markdown" value="1" />
@@ -71,17 +73,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="edge" value="9851" />
+          <entry key="edge" value="9920" />
           <entry key="env" value="155" />
           <entry key="gitignore" value="26" />
-          <entry key="js" value="34191" />
+          <entry key="js" value="34415" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="155" />
-          <entry key="HTML" value="9840" />
-          <entry key="JavaScript" value="34191" />
+          <entry key="HTML" value="9909" />
+          <entry key="JavaScript" value="34415" />
           <entry key="PLAIN_TEXT" value="37" />
         </counts>
       </usages-collector>
@@ -116,18 +118,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="104" column="22" lean-forward="true" selection-start-line="102" selection-start-column="16" selection-end-line="104" selection-end-column="22" />
-              <folding>
-                <element signature="n#div#0;n#div#2;n#form#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/master.edge">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
@@ -145,11 +135,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SendController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="151" column="23" lean-forward="true" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="23" />
+            <state relative-caret-position="286">
+              <caret line="60" column="94" selection-start-line="60" selection-start-column="94" selection-end-line="60" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/login.edge">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="59" column="120" selection-start-line="59" selection-start-column="120" selection-end-line="59" selection-end-column="120" />
             </state>
           </provider>
         </entry>
@@ -180,11 +179,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="482" column="21" lean-forward="true" selection-start-line="482" selection-start-column="21" selection-end-line="482" selection-end-column="21" />
+            <state relative-caret-position="-171">
+              <caret line="482" column="21" selection-start-line="482" selection-start-column="21" selection-end-line="482" selection-end-column="21" />
               <folding>
                 <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
-                <element signature="n#!!block;n#mediaCronJob#0;n#MainController#0" />
               </folding>
             </state>
           </provider>
@@ -245,7 +243,6 @@
         <option value="$PROJECT_DIR$/config/database.js" />
         <option value="$PROJECT_DIR$/config/app.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/resources/views/login.edge" />
         <option value="$PROJECT_DIR$/resources/views/dashboard.edge" />
         <option value="$PROJECT_DIR$/database/migrations/1539709369539_number_list_schema.js" />
         <option value="$PROJECT_DIR$/database/migrations/1539762294995_email_list_schema.js" />
@@ -273,6 +270,7 @@
         <option value="$PROJECT_DIR$/resources/views/master.edge" />
         <option value="$PROJECT_DIR$/resources/views/test.edge" />
         <option value="$PROJECT_DIR$/app/Controllers/Http/SendController.js" />
+        <option value="$PROJECT_DIR$/resources/views/login.edge" />
       </list>
     </option>
   </component>
@@ -327,6 +325,11 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="whatsapp" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="whatsapp" type="b2602c69:ProjectViewProjectNode" />
@@ -416,12 +419,12 @@
       <workItem from="1542065980693" duration="1471000" />
       <workItem from="1542193925525" duration="40000" />
       <workItem from="1542433855917" duration="1873000" />
-      <workItem from="1542436430353" duration="5934000" />
+      <workItem from="1542436430353" duration="9390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162215000" />
+    <option name="totallyTimeSpent" value="165671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -628,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/login.edge">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/qr.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -722,7 +718,7 @@
     <entry file="file://$PROJECT_DIR$/resources/views/sendsms.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
-          <caret line="104" column="22" lean-forward="true" selection-start-line="102" selection-start-column="16" selection-end-line="104" selection-end-column="22" />
+          <caret line="104" column="22" selection-start-line="102" selection-start-column="16" selection-end-line="104" selection-end-column="22" />
           <folding>
             <element signature="n#div#0;n#div#2;n#form#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
           </folding>
@@ -767,17 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="482" column="21" lean-forward="true" selection-start-line="482" selection-start-column="21" selection-end-line="482" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
-            <element signature="n#!!block;n#mediaCronJob#0;n#MainController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/test.edge">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -793,10 +778,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/Http/MainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <caret line="482" column="21" selection-start-line="482" selection-start-column="21" selection-end-line="482" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!block;n#cronJob#0;n#MainController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/SendController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="151" column="23" lean-forward="true" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="23" />
+        <state relative-caret-position="286">
+          <caret line="60" column="94" selection-start-line="60" selection-start-column="94" selection-end-line="60" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/login.edge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="59" column="120" selection-start-line="59" selection-start-column="120" selection-end-line="59" selection-end-column="120" />
         </state>
       </provider>
     </entry>
