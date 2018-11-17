@@ -38,8 +38,11 @@ class SendController {
     }
 
     let file = request.file('media', {
-      maxSize: '50mb'
+      maxSize: '100mb',
+      allowedExtension: ['png', 'jpg']
     })
+
+    console.log(file)
 
     let numberList = numbers.split(',')
 
@@ -56,6 +59,9 @@ class SendController {
         let bitmap = fs.readFileSync(mediaFile);
         // convert binary data to base64 encoded string
         let base64 = `data:image/${file.subtype};base64,` + Buffer(bitmap).toString('base64');
+
+        console.log(base64)
+
         let sendUrl = url + "sendFile?token=" + token
 
         for (let i = 0; i < numberList.length; i++){
@@ -126,7 +132,7 @@ class SendController {
     if (sms !== null){
 
       if (senderInfo === null){
-        senderInfo = "CAMPAIGN MANAGER"
+        senderInfo = "C_MANAGER"
       }
 
       let key = SmController.getKey()
@@ -158,12 +164,12 @@ class SendController {
         /**
          * Save Bulk ID to DB for delivery report
          */
-        let smsDelivery = new SmsDelivery()
-
-        smsDelivery.msg_id = "CMP-" + (bulkID.substring(0,5))
-        smsDelivery.bulk_id = bulkID
-
-        await smsDelivery.save()
+        // let smsDelivery = new SmsDelivery()
+        //
+        // smsDelivery.msg_id = "CMP-" + (bulkID.substring(0,5))
+        // smsDelivery.bulk_id = bulkID
+        //
+        // await smsDelivery.save()
 
         session.flash({
           notification: "SMS Sent successfully"
