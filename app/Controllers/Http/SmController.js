@@ -12,7 +12,7 @@ const accountKey = "99DC66E6B63F49DFA7035E464CEA1FC8"
 
 class SmController {
 
-  getKey(){
+  static getKey(){
     let keyURL = `${baseURL}/settings/1/accounts/_/api-keys?name=InfoBipKEY`
 
     const username = "swampsms"
@@ -125,7 +125,7 @@ class SmController {
       return response.redirect('back')
     }
 
-    let key = this.getKey()
+    let key = SmController.getKey()
 
     // console.log("KEY: " + key)
 

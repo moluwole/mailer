@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>WhatsApp Mass Mailer</title>
-  <meta name="description" content="Admin, Mailer, BrandEnvoy, Marketing, Email Marketing Target Marketing, Whatsapp Marketing" />
+  <title>Campaign Mailer</title>
+  <meta name="description" content="Campaign, Admin, Mailer, BrandEnvoy, Marketing, Email Marketing Target Marketing, Whatsapp Marketing" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -15,10 +15,6 @@
   <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
-
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-
-  <!-- style -->
 
   <!-- style -->
   {{ style("https://use.fontawesome.com/releases/v5.4.1/css/all.css")}}
@@ -170,6 +166,17 @@
           <ul class="nav" ui-nav>
             <li class="nav-header hidden-folded">
               <small class="text-muted">Main</small>
+            </li>
+
+            <li>
+              <a href="/send-message" >
+                  <span class="nav-icon">
+                    <i class="material-icons">send
+                      <span ui-include="'../assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                <span class="nav-text">Quick Send</span>
+              </a>
             </li>
 
             <li>

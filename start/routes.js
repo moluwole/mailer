@@ -15,7 +15,6 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
-const Server = use('Adonis/Src/Server')
 
 Route.get('/', 'DashBoardController.openPage')
 Route.get('/dashboard', 'DashBoardController.index')
@@ -23,12 +22,11 @@ Route.get('/status', 'MainController.status')
 Route.get('/qr', 'MainController.status')
 Route.get('/message', 'MainController.messages')
 Route.get('/del-contact', 'MainController.loadContacts')
+Route.get('send-message', 'SendController.index')
 
-// Route.get('server_timeout', () => {
-//   return {
-//     timeout: Server.getInstance().timeout
-//   };
-// })
+Route.post('message/send', 'SendController.sendMessage')
+
+
 
 Route.get('/med', ({ view }) => {
   return view.render('media')

@@ -1,0 +1,74 @@
+@layout('master')
+
+@section('content')
+
+<div id="content" class="app-content box-shadow-z0" role="main">
+  <div class="padding">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="box">
+          <div class="box-header">
+            <h2>Quick Mailing</h2>
+            <small>Send messages to phone numbers or emails</small>
+          </div>
+          <div class="box-divider m-a-0"></div>
+          <div class="box-body">
+            <div class="row-sm row">
+              <form action="/message/send" method="POST" id="send_test">
+                {{ csrfField() }}
+
+                <div class="form-group" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                  <label class="form-control-label">Phone Numbers <small>separated by commas (format: 234XXXXXXXXXX)</small></label>
+                  <textarea name="number" id="number" class="form-control" rows="3" placeholder="Phone Numbers"
+                            onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+                </div>
+
+                <div class="form-group" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                  <label class="form-control-label">Message Body</label>
+                  <textarea name="message" id="message" class="form-control" rows="5" placeholder="Message Body"
+                            onfocus="setbg('#e5fff3');" onblur="setbg('white')"></textarea>
+                </div>
+
+                <div class="form-group" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                  <label class="form-control-label">Message Media <small>(Optional)</small></label>
+                  <div class="form-control-file text-black" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                    <input type="file" name="media" id="media">
+                  </div>
+                  <br />
+                </div>
+
+                <div class="form-group" style="margin-right: 10px; margin-left: 10px; margin-top: 10px">
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="whatsapp" checked>
+                      Select to send message to WhatsApp
+                    </label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label>
+                      <input type="checkbox" name="sms">
+                      Select to send message vis SMS
+                    </label>
+                  </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="box-divider m-a-0"></div>
+
+                <div class="form-group text-right" style="margin-right: 20px; margin-left: 10px; margin-top: 20px;">
+                  <button type="submit" class="btn btn-primary">Send Message &nbsp; <i class="material-icons">send</i> </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endsection
