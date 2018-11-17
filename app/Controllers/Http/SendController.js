@@ -139,7 +139,7 @@ class SendController {
 
       const baseURL = "https://wv4mr.api.infobip.com"
 
-      let smsUrl = `${baseURL}/sms/1/text/single`
+      let smsUrl = `${baseURL}/sms/2/text/single`
       const header = {
         'Authorization' : 'App ' + key,
         'Content-Type': 'application/json',
