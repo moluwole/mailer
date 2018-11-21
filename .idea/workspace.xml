@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/master.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master.edge" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/target.edge" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/target.edge" afterDir="false" />
-    </list>
+    <list default="true" id="68a8927a-6660-4610-a2d4-61a64cdc8632" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -18,7 +15,7 @@
     <session id="882206251">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -137,7 +134,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/target.edge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
+            <state relative-caret-position="264">
               <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
             </state>
           </provider>
@@ -418,18 +415,17 @@
       <workItem from="1542065980693" duration="1471000" />
       <workItem from="1542193925525" duration="40000" />
       <workItem from="1542433855917" duration="1873000" />
-      <workItem from="1542436430353" duration="9527000" />
+      <workItem from="1542436430353" duration="9712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165808000" />
+    <option name="totallyTimeSpent" value="165993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2015504" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2015504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -443,7 +439,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26904178" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26904178" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -796,7 +792,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/target.edge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
+        <state relative-caret-position="264">
           <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
         </state>
       </provider>

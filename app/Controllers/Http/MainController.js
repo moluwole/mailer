@@ -237,7 +237,7 @@ class MainController {
      * Check for Random here in order to make it random
      */
     if (random !== null){
-      numberArray = SmController.randomize(numberArray)
+      numberArray = MainController.randomize(numberArray)
     }
 
     /**
@@ -681,6 +681,20 @@ class MainController {
       job.start()
       console.log("Cron Job Started.")
     }
+  }
+
+  /**
+   * Function to randomize elements of the array
+   * @param array
+   * @returns {Array}
+   */
+  static randomize(array) {
+    let newArray = []
+    for (let i = 0; i < array.length; i++) {
+      let randomIndex = Math.floor(Math.random() * (i + 1));
+      newArray[i] = array[randomIndex];
+    }
+    return newArray
   }
 
 }
