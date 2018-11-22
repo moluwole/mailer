@@ -129,39 +129,37 @@ class SmController {
 
     // console.log("KEY: " + key)
 
-    let numberArray = null
+    //Get Number Array from Session and Save to Database
+    let numberArray
 
-    /**
-     * Check for Category
-     */
-    if (state === "All"){
-      numberArray = await NumberList.all()
-    }
-    else{
-      numberArray = await NumberList.query().where({state: state}).fetch()
-    }
-    numberArray = numberArray.toJSON()
+    let sqlQuery = "SELECT * FROM number_lists"
 
     /**
      * Check for Random here in order to make it random
      */
     if (random !== null){
-        numberArray = SmController.randomize(numberArray)
+      sqlQuery += " AS r1 JOIN (SELECT CEIL(RAND() * (SELECT MAX(id) FROM number_lists)) AS id) AS r2 WHERE r1.id >= r2.id"
+      if (state !== "All"){
+        sqlQuery += " AND state = " + state
+      }
+    }
+    else {
+      if (state !== "All"){
+        sqlQuery += " WHERE state = " + state
+      }
     }
 
     /**
      * Check SMS Limit and set
      */
-    if (smsLimit === null || smsLimit === ""){
-      limit = numberArray.length
+
+    if (smsLimit !== null && smsLimit !== ""){
+      sqlQuery += " LIMIT " + smsLimit
     }
-    else{
-      if (parseInt(smsLimit) > numberArray.length){
-        limit = numberArray.length
-      } else {
-        limit = parseInt(smsLimit)
-      }
-    }
+
+    const numbersList = await Database.raw(sqlQuery)
+
+    numberArray = numbersList[0]
 
     let numbers = []
     for (let i =0; i<limit;i++){

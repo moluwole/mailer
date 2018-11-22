@@ -42,12 +42,12 @@ class SendController {
       allowedExtension: ['png', 'jpg']
     })
 
-    console.log(file)
+    // console.log(file)
 
     let numberList = numbers.split(',')
 
     if (whatsapp !== null){
-      if (file !== null){
+      if (file.clientName !== null && file.clientName !== ""){
         let filename = `${new Date().getTime()}.${file.subtype}`
 
         await file.move(Helpers.appRoot('/storage/uploads/media/'), {
@@ -82,10 +82,10 @@ class SendController {
 
             let responseBody = JSON.parse(sender.getBody())
             if (responseBody["sent"] === true) {
-              console.log("Message Sent to " + number)
+              console.log("Message Sent to " + numberList[i])
             }else {
               console.log(responseBody)
-              console.log("Unable to send message to " + number)
+              console.log("Unable to send message to " + numberList[i])
             }
           }
           catch (e) {

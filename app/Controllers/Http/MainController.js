@@ -195,8 +195,6 @@ class MainController {
     const messageLimit = data[0]['limit']
     const random = data[0]['random']
 
-    let limit = 0
-
     if (state === null || state === ""){
       session.flash({
         error: 'Select a State to send messages to '
@@ -222,39 +220,38 @@ class MainController {
     const messageID = messageDB.id
 
     //Get Number Array from Session and Save to Database
-    let numberArray = null
+    let numberArray
 
-    if (state === "All"){
-      numberArray = await NumberList.all()
-    }
-    else{
-      numberArray = await NumberList.query().where({state: state}).fetch()
-    }
-
-    numberArray = numberArray.toJSON()
+    let sqlQuery = "SELECT * FROM number_lists"
 
     /**
      * Check for Random here in order to make it random
      */
     if (random !== null){
-      numberArray = MainController.randomize(numberArray)
+      sqlQuery += " AS r1 JOIN (SELECT CEIL(RAND() * (SELECT MAX(id) FROM number_lists)) AS id) AS r2 WHERE r1.id >= r2.id"
+      if (state !== "All"){
+        sqlQuery += " AND state = " + state
+      }
+    }
+    else {
+      if (state !== "All"){
+        sqlQuery += " WHERE state = " + state
+      }
     }
 
     /**
      * Check SMS Limit and set
      */
-    if (messageLimit === null || messageLimit === ""){
-      limit = numberArray.length
-    }
-    else{
-      if (parseInt(messageLimit) > numberArray.length){
-        limit = numberArray.length
-      } else {
-        limit = parseInt(messageLimit)
-      }
+
+    if (messageLimit !== null && messageLimit !== ""){
+      sqlQuery += " LIMIT " + messageLimit
     }
 
-    for (let i = 0; i < limit; i++) {
+    const numbersList = await Database.raw(sqlQuery)
+
+    numberArray = numbersList[0]
+
+    for (let i = 0; i < numberArray.length; i++) {
       let number = new Numbers()
 
       number.message_id = messageID
@@ -441,7 +438,13 @@ class MainController {
     }
   }
 
-
+  /**
+   * Media Functions
+   * @param request
+   * @param response
+   * @param view
+   * @returns {Promise<*>}
+   */
 
   async showMedia({request, response, view}){
     let query = 'SELECT DISTINCT * FROM number_lists AS a JOIN(SELECT FLOOR((SELECT MIN(id) FROM number_lists) + ' +
@@ -463,8 +466,6 @@ class MainController {
     let state           = data[0]['state']
     const messageLimit  = data[0]['limit']
     const random        = data[0]['random']
-
-    let limit = 0
 
     if (state === null || state === ""){
       session.flash({
@@ -508,39 +509,38 @@ class MainController {
     const messageID = messageDB.id
 
     //Get Number Array from Session and Save to Database
-    let numberArray = null
+    let numberArray
 
-    if (state === "All"){
-      numberArray = await NumberList.all()
-    }
-    else{
-      numberArray = await NumberList.query().where({state: state}).fetch()
-    }
-
-    numberArray = numberArray.toJSON()
+    let sqlQuery = "SELECT * FROM number_lists"
 
     /**
      * Check for Random here in order to make it random
      */
     if (random !== null){
-      numberArray = SmController.randomize(numberArray)
+      sqlQuery += " AS r1 JOIN (SELECT CEIL(RAND() * (SELECT MAX(id) FROM number_lists)) AS id) AS r2 WHERE r1.id >= r2.id"
+      if (state !== "All"){
+        sqlQuery += " AND state = " + state
+      }
+    }
+    else {
+      if (state !== "All"){
+        sqlQuery += " WHERE state = " + state
+      }
     }
 
     /**
      * Check SMS Limit and set
      */
-    if (messageLimit === null || messageLimit === ""){
-      limit = numberArray.length
-    }
-    else{
-      if (parseInt(messageLimit) > numberArray.length){
-        limit = numberArray.length
-      } else {
-        limit = parseInt(messageLimit)
-      }
+
+    if (messageLimit !== null && messageLimit !== ""){
+      sqlQuery += " LIMIT " + messageLimit
     }
 
-    for (let i = 0; i < limit; i++) {
+    const numbersList = await Database.raw(sqlQuery)
+
+    numberArray = numbersList[0]
+
+    for (let i = 0; i < numberArray.length; i++) {
       let number = new Numbers()
 
       number.message_id = messageID
@@ -682,21 +682,6 @@ class MainController {
       console.log("Cron Job Started.")
     }
   }
-
-  /**
-   * Function to randomize elements of the array
-   * @param array
-   * @returns {Array}
-   */
-  static randomize(array) {
-    let newArray = []
-    for (let i = 0; i < array.length; i++) {
-      let randomIndex = Math.floor(Math.random() * (i + 1));
-      newArray[i] = array[randomIndex];
-    }
-    return newArray
-  }
-
 }
 
 module.exports = MainController
