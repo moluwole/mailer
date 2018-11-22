@@ -140,12 +140,12 @@ class SmController {
     if (random !== null){
       sqlQuery += " AS r1 JOIN (SELECT CEIL(RAND() * (SELECT MAX(id) FROM number_lists)) AS id) AS r2 WHERE r1.id >= r2.id"
       if (state !== "All"){
-        sqlQuery += " AND state = " + state
+        sqlQuery += ' AND state = "' + state + '"'
       }
     }
     else {
       if (state !== "All"){
-        sqlQuery += " WHERE state = " + state
+        sqlQuery += ' WHERE state = "' + state + '"'
       }
     }
 
@@ -163,7 +163,7 @@ class SmController {
 
     let numbers = []
     for (let i =0; i<limit;i++){
-      numbers.push(numberArray[i]['phone_number'])
+      numbers.push(numberArray[i].phone_number)
     }
     /**
      * Store Message into Database and get ID
