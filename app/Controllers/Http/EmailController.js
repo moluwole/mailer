@@ -92,12 +92,17 @@ class EmailController {
         let email = data[index][0]
 
         try {
-          let emailList = new EmailList()
+          let emailCheck = await EmailList.query().where({email: email}).fetch()
 
-          emailList.email = email
-          emailList.type  = emailState
+          if (!emailCheck) {
 
-          await emailList.save()
+            let emailList = new EmailList()
+
+            emailList.email = email
+            emailList.type = emailState
+
+            await emailList.save()
+          }
         }
         catch (e) {
           console.log(e)
@@ -112,39 +117,6 @@ class EmailController {
 
     return response.redirect('back')
   }
-
-  // static cronCsv(type){
-  //   let stopCron = false
-  //   const baseDir = `${Helpers.appRoot('/storage/uploads/email/')}`
-  //
-  //   const job = new CronJob('30 * * * * *', function () {
-  //     let files = fs.readdirSync(baseDir)
-  //     if (files.length <= 0){
-  //       stopCron = true
-  //     }
-  //     else{
-  //       for (let singleFile in files){
-  //         let csvFile = `${baseDir}${files[singleFile]}`
-  //         console.log(csvFile)
-  //
-  //
-  //
-  //       }
-  //     }
-  //   })
-  //
-  //   if (stopCron) {
-  //     if (job.isRunning()){
-  //       job.destroy()
-  //       console.log("Cron Job stopped. Reason: " + reason)
-  //     }
-  //   }
-  //   else {
-  //     job.start()
-  //     console.log("Cron Job Started.")
-  //   }
-  // }
-
 
   async messages({view}){
 

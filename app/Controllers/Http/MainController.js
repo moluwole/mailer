@@ -157,16 +157,20 @@ class MainController {
         }
 
         try {
-          let numberList = new NumberList()
+          let numberExist = await NumberList.query().where({phone_number: phone_number}).fetch()
 
-          numberList.surname      = surname
-          numberList.first_name   = first_name
-          numberList.other_name   = other_name
-          numberList.ward         = ward
-          numberList.phone_number = phone_number
-          numberList.state        = state
+          if (!numberExist){
+            let numberList = new NumberList()
 
-          await numberList.save()
+            numberList.surname      = surname
+            numberList.first_name   = first_name
+            numberList.other_name   = other_name
+            numberList.ward         = ward
+            numberList.phone_number = phone_number
+            numberList.state        = state
+
+            await numberList.save()
+          }
         }
         catch (e) {
           console.log(e)
